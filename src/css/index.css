@@ -34,16 +34,6 @@ body>section>article:first-of-type {
     margin-bottom: 16px;
 }
 
-.section-title>span:first-of-type {
-    height: 2px;
-    width: 100px;
-    background-color: white;
-}
-
-.section-title>* {
-    margin-right: 16px;
-}
-
 /* body>section>article {
     height: 18px;
     margin-top: 4px;

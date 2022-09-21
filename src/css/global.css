@@ -11,3 +11,13 @@ body {
 
     overflow: hidden;
 }
+
+.section-title>span:first-of-type {
+    height: 2px;
+    width: 100px;
+    background-color: white;
+}
+
+.section-title>* {
+    margin-right: 16px;
+}
