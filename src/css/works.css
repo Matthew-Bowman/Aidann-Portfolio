@@ -10,11 +10,11 @@ header {
 .projects {
     display: flex;
     flex-wrap: wrap;
-    gap: 64px;
+    gap: 32px;
 
-    margin-top: 32px;
-    margin-left: 64px;
-    margin-right: 64px;
+    justify-content: center;
+
+    margin: 32px 64px;
 }
 
 .project-card {
