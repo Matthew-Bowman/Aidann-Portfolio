@@ -88,7 +88,6 @@ body>section>article:last-of-type>* {
     display: block;
     width: 75px;
     filter: invert(85%);
-    animation: updown 2s ease infinite;
 }
 
 .scroll-indicator:first-of-type {
@@ -99,16 +98,6 @@ body>section>article:last-of-type>* {
     cursor: pointer;
     filter: invert(100%);
 }
-
-@keyframes updown {  
-    50% {
-      transform: translateY(25%);
-    }
-  
-    100% {
-      transform: translateY(0%);
-    }
-  }
 
 
 
