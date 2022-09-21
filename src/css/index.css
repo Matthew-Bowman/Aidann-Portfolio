@@ -34,13 +34,13 @@ body>section>article:first-of-type {
     margin-bottom: 16px;
 }
 
-body>section>article:first-of-type>span:first-of-type {
+.section-title>span:first-of-type {
     height: 2px;
     width: 100px;
     background-color: white;
 }
 
-body>section>article:first-of-type>* {
+.section-title>* {
     margin-right: 16px;
 }
 
