@@ -27,13 +27,6 @@ body>section {
     margin-bottom: 180px;
 }
 
-body>section>article:first-of-type {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    margin-bottom: 16px;
-}
-
 /* body>section>article {
     height: 18px;
     margin-top: 4px;
