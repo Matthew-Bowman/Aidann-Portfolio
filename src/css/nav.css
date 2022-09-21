@@ -73,7 +73,7 @@ nav {
 
 /* Add Responsiveness */
 @media screen and (max-width: 800px) {
-    .nav-items ul {
-        flex-direction: column;
+    .nav-brand {
+        display: none;
     }
 }
