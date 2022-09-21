@@ -1,0 +1,77 @@
+/* 
+    h1 - 88.54pt - Page heading         // 7.3783389106569rem
+    h2 - 80pt - Heading                 // 6.6666717060374rem
+    h3 - 63.82pt - Introduction         // 5.3183373534913rem
+    h4 - 56.7pt - Section heading       // 4.7250035716540rem
+    h5 - 51.6pt - Section title         // 4.3000032503941rem
+    h6 - 48.99pt - Discipline           // 4.0825030859846rem
+    p big - 43pt - Section Desc 2       // 3.5833360419951rem
+    p - 40pt - Section Description      // 3.3333358530187rem
+    p light - 31.3pt - Nav Bar Items    // 2.6083353049871rem
+
+        REFACTORED
+        ----------
+
+    1 - Title       - 3rem
+    2 - Heading     - 2.25rem
+    4 - Subheading  - 1.75rem
+    5 - Paragraph   - 1.25rem
+
+*/
+
+/* Typography Styles */
+.title {
+    font-family: ECB_Regular;
+    font-size: 3rem;
+}
+
+.heading {
+    font-family: ECB_Regular;
+    font-size: 2.25rem;
+}
+
+.subheading {
+    font-family: ECB_Regular;
+    font-size: 1.75rem;
+}
+
+.paragraph {
+    font-family: ECB_Regular;
+    font-size: 1.25rem;
+}
+
+.bold-italic {
+font-family: ECB_Bold_Italic;
+}
+
+.bold {
+    font-family: ECB_Bold;
+}
+
+.italic {
+    font-family: ECB_Italic;
+}
+
+.light-italic {
+    font-family: ECB_Light_Italic;
+}
+
+.light {
+    font-family: ECB_Light;
+}
+
+.medium-italic {
+    font-family: ECB_Medium_Italic;
+}
+
+.medium {
+    font-family: ECB_Medium;
+}
+
+.semibold-italic {
+    font-family: ECB_SemiBold_Italic;
+}
+
+.semibold {
+    font-family: ECB_SemiBold;
+}

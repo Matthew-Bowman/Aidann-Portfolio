@@ -1,0 +1,50 @@
+/* Import Font */
+@font-face {
+    font-family: ECB_Bold_Italic;
+    src: url(../Static/Font\ Family/Euclid\ Circular\ B\ Bold\ Italic.ttf);
+}
+
+@font-face {
+    font-family: ECB_Bold;
+    src: url(../Static/Font\ Family/Euclid\ Circular\ B\ Bold.ttf);
+}
+
+@font-face {
+    font-family: ECB_Italic;
+    src: url(../Static/Font\ Family/Euclid\ Circular\ B\ Italic.ttf);
+}
+
+@font-face {
+    font-family: ECB_Light_Italic;
+    src: url(../Static/Font\ Family/Euclid\ Circular\ B\ Light\ Italic.ttf);
+}
+
+@font-face {
+    font-family: ECB_Light;
+    src: url(../Static/Font\ Family/Euclid\ Circular\ B\ Light.ttf);
+}
+
+@font-face {
+    font-family: ECB_Medium_Italic;
+    src: url(../Static/Font\ Family/Euclid\ Circular\ B\ Medium\ Italic.ttf);
+}
+
+@font-face {
+    font-family: ECB_Medium;
+    src: url(../Static/Font\ Family/Euclid\ Circular\ B\ Medium.ttf);
+}
+
+@font-face {
+    font-family: ECB_Regular;
+    src: url(../Static/Font\ Family/Euclid\ Circular\ B\ Regular.ttf);
+}
+
+@font-face {
+    font-family: ECB_SemiBold_Italic;
+    src: url(../Static/Font\ Family/Euclid\ Circular\ B\ SemiBold\ Italic.ttf);
+}
+
+@font-face {
+    font-family: ECB_SemiBold;
+    src: url(../Static/Font\ Family/Euclid\ Circular\ B\ SemiBold.ttf);
+}

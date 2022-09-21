@@ -1,0 +1,78 @@
+/* Nav Styling */
+nav {
+    /* Display Styles */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* Styling & Positioning */
+
+    background-color: #161616;
+    position: fixed;
+    width: 100%;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid #212121;
+}
+
+.nav-brand {
+    margin-left: 40px;
+}
+
+.nav-items {
+    margin-left: auto;
+}
+
+.nav-items ul {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    margin-right: 16px;
+}
+
+.nav-items li {
+    margin-right: 32px;
+}
+
+.nav-items li:last-of-type {
+    margin-right: 64px;
+    margin-left: 32px;
+}
+
+.nav-items a {
+    text-decoration: none;
+    color: #ebebeb;
+}
+
+.nav-items a:hover, .nav-items .active {
+    color: #ffffff;
+}
+
+.nav-items a:not(.active):after, .nav-items .active {
+    /* Set display & content */
+    display: block;
+    content: "";
+
+    /* Keep width at 0 until hovered */
+    width: 0;
+
+    /* Add Border */
+    border-bottom: 2px solid white;
+    border-radius: 1px;
+
+    /* Create transition */
+    transition: 0.3s;
+    left: 0px;
+}
+
+.nav-items a:not(.active):hover:after, .nav-items .active {
+    content: "";
+    width: 100%;
+}
+
+/* Add Responsiveness */
+@media screen and (max-width: 800px) {
+    .nav-items ul {
+        flex-direction: column;
+    }
+}

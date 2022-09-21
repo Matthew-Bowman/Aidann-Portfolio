@@ -1,0 +1,16 @@
+footer {
+    /* Flexbox */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    /* Positioning */
+    padding-top: 32px;
+    padding-bottom: 32px;
+    margin-top: 16px;
+    
+    /* Styling */
+    background-color: #161616;
+    border-top: 2px solid #212121;
+}

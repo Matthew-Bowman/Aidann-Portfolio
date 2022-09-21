@@ -1,0 +1,112 @@
+/* Page Styles */
+* { 
+    margin: 0; /* removes default margin */
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #131313;
+    font-family: ECB_Light;
+    color: #ffffff;
+}
+
+/* Page Header Styles */
+header {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+}
+
+header article {
+    display: block;
+}
+
+
+/* Section Styles */
+
+body>section {
+    margin-left: 64px;
+    height: 100vh;
+}
+
+body>section {
+    padding-top: 128px;  
+}
+
+body>section>article:first-of-type {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 16px;
+}
+
+body>section>article:first-of-type>span:first-of-type {
+    height: 2px;
+    width: 100px;
+    background-color: white;
+}
+
+body>section>article:first-of-type>* {
+    margin-right: 16px;
+}
+
+/* body>section>article {
+    height: 18px;
+    margin-top: 4px;
+} */
+
+body>section>article:last-of-type>* {
+    margin-bottom: 16px;
+}
+
+.contact-handle {
+    display: flex;
+    align-items: center;
+}
+
+.contact-handle img {
+    height: 32px;
+    margin-right: 16px;
+}
+
+.content-handle>*:first-of-type {
+    margin-right: 16px;
+}
+
+/* Scroll Indicator Styles */
+.scroll-indicator {
+    display: block;
+    width: 75px;
+    filter: invert(85%);
+    animation: updown 2s ease infinite;
+}
+
+.scroll-indicator:first-of-type {
+    margin-left: 64px;
+}
+
+.scroll-indicator:hover {
+    cursor: pointer;
+    filter: invert(100%);
+}
+
+@keyframes updown {  
+    50% {
+      transform: translateY(25%);
+    }
+  
+    100% {
+      transform: translateY(0%);
+    }
+  }
+
+
+
+@media screen and (max-width: 1100px) {
+    header {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+}
