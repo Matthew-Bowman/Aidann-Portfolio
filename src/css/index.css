@@ -1,17 +1,3 @@
-/* Page Styles */
-* { 
-    margin: 0; /* removes default margin */
-    scroll-behavior: smooth;
-}
-
-body {
-    background-color: #131313;
-    font-family: ECB_Light;
-    color: #ffffff;
-
-    overflow: hidden;
-}
-
 /* Page Header Styles */
 header {
     display: flex;
