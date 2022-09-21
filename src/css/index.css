@@ -8,6 +8,8 @@ body {
     background-color: #131313;
     font-family: ECB_Light;
     color: #ffffff;
+
+    overflow: hidden;
 }
 
 /* Page Header Styles */
@@ -26,11 +28,17 @@ header article {
 
 body>section {
     margin-left: 64px;
-    height: 100vh;
+    height: fit-content;
+    opacity: 100%;
+    transition: linear 0.25s opacity;
+}
+
+body>section:not(.selected) {
+    opacity: 20%;
 }
 
 body>section {
-    padding-top: 128px;  
+    margin-bottom: 180px;
 }
 
 body>section>article:first-of-type {
@@ -83,33 +91,6 @@ body>section>article:last-of-type>* {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-}
-
-.one, .two {
-    width: 30px;
-    height: 3px;
-    background-color: white;
-    position: absolute;
-    right: -16px;
-}
-
-.arrow-one .one, .arrow-two .one {
-    transform: rotate(-45deg) translateX(23%);
-    transform-origin: top right;
-}
-
-.arrow-one .two, .arrow-two .two{
-    transform: rotate(45deg) translateX(-23%);
-    transform-origin: top left;
-}
-
-.arrow-one, .arrow-two {
-    position: absolute;
-    bottom: 48px;
-}
-
-.arrow-two {
-    bottom: 64px;
 }
 
 @media screen and (max-width: 1100px) {
