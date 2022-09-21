@@ -74,6 +74,16 @@ body>section>article:last-of-type>* {
 }
 
 /* Scroll Indicator Styles */
+.indicator-container {
+    width: 100vw;
+    position: fixed;
+    bottom: 64px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .scroll-indicator {
     display: block;
     width: 75px;
