@@ -1,0 +1,33 @@
+nav {
+    position: relative;
+}
+
+header {
+    margin-left: 64px;
+    margin-top: 64px;
+}
+
+.reviews {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+
+    justify-content: center;
+
+    margin: 32px 64px;
+}
+
+.reviews-card {
+    background-color: #1c1c1c;
+    overflow: hidden;
+    max-width: 540px;
+    border-radius: 16px;
+}
+
+.card-footer {
+    padding: 16px;
+}
+
+.blue {
+    color: #52b5ef;
+}
