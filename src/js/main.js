@@ -1,3 +1,4 @@
+// Scrolling Functionality
 const scrollIndicators = document.querySelectorAll(`.scroll-indicator`);
 
 scrollIndicators.forEach(indicator => {
@@ -7,10 +8,6 @@ scrollIndicators.forEach(indicator => {
         window.scrollTo(0, scrollElem.offsetTop);
     });
 });
-
-const scrollingYCoords = [
-    0, 575, 1050, 1710, 2291
-]
 
 const scrollIds = [
     `home`, `about`, `prices`, `terms`, `contact`
@@ -46,6 +43,8 @@ function ScrollSections() {
     else
         scrollButton.style.display = `flex`;
 
-    document.querySelector(`#${scrollIds[scrollIndex]}`).classList.add(`selected`);
-    window.scrollTo(0, scrollingYCoords[scrollIndex]);
+    let elem = document.querySelector(`#${scrollIds[scrollIndex]}`)
+
+    elem.classList.add(`selected`);
+    window.scrollTo(0, elem.offsetTop - window.innerHeight/2 + elem.clientHeight/2);
 }
