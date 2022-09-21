@@ -9,6 +9,7 @@ nav {
 
     background-color: #161616;
     position: fixed;
+    top: 0;
     width: 100%;
     padding-top: 16px;
     padding-bottom: 16px;
