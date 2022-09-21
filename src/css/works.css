@@ -6,3 +6,27 @@ header {
     margin-left: 64px;
     margin-top: 64px;
 }
+
+.projects {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 64px;
+
+    margin-top: 32px;
+    margin-left: 64px;
+}
+
+.project-card {
+    background-color: #1c1c1c;
+    overflow: hidden;
+    max-width: 540px;
+    border-radius: 16px;
+}
+
+.card-footer {
+    padding: 16px;
+}
+
+.blue {
+    color: #52b5ef;
+}
