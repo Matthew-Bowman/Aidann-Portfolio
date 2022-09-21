@@ -45,11 +45,11 @@ body {
     overflow: hidden;
 }
 
-.input-container img { 
-    width: 48px;
+.input-container img {
+    align-self: center;
     align-items: center;
     justify-content: center;
-    padding: 8px;
+    padding: 16px;
     filter: invert(40%);
 }
 
