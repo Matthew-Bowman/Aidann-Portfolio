@@ -4,4 +4,7 @@ nav {
 
 header {
     margin: 32px 64px;
+
+    display: flex;
+    justify-content: space-between;
 }
