@@ -20,6 +20,7 @@ header {
     border: 2px solid #4f4f4f;
     align-self: flex-start;
     user-select: none;
+    overflow: hidden;
 }
 
 .panel ul {
