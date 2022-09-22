@@ -45,30 +45,41 @@
     </header>
 
     <section class="projects">
-        <article class="project-card">
-            <img src="https://picsum.photos/seed/1/540/375" width="540px" height="375px">
-            <div class="card-footer">
-                <h3 class="subheading blue">Small Package</h3>
-                <h2 class="heading">Simulator UI Design</h2>
-                <p class="paragraph">Here I designed a simulator UI design for one of my clients</p>
-            </div>
-        </article>
-        <article class="project-card">
-            <img src="https://picsum.photos/seed/2/540/375" width="540px" height="375px">
-            <div class="card-footer">
-                <h3 class="subheading blue">Small Package</h3>
-                <h2 class="heading">Simulator UI Design</h2>
-                <p class="paragraph">Here I designed a simulator UI design for one of my clients</p>
-            </div>
-        </article>
-        <article class="project-card">
-            <img src="https://picsum.photos/seed/3/540/375" width="540px" height="375px">
-            <div class="card-footer">
-                <h3 class="subheading blue">Small Package</h3>
-                <h2 class="heading">Simulator UI Design</h2>
-                <p class="paragraph">Here I designed a simulator UI design for one of my clients</p>
-            </div>
-        </article>
+        <?php
+            // Assign Variables
+            $servername = getenv("db_host");
+            $username = getenv("db_user");
+            $dbname = getenv("db_name");
+            
+            // Create connection
+            $conn = new mysqli($servername, $username, "", $dbname);
+
+            // Check connection
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+
+            $sql = "SELECT * FROM works";
+            $result = $conn->query($sql);
+            
+            if ($result->num_rows > 0) {
+                // output data of each row
+                while($row = $result->fetch_assoc()) {
+                    echo "<article class='project-card' id='".$row["work_id"]."'>";
+                    echo     "<img src='".$row["thumbnail"]."' width='540px' height='375px'>";
+                    echo     "<div class='card-footer'>";
+                    echo         "<h3 class='subheading blue'>".$row["type"]."</h3>";
+                    echo         "<h2 class='heading'>".$row["name"]."</h2>";
+                    echo         "<p class='paragraph'>".$row["description"]."</p>";
+                    echo     "</div>";
+                    echo "</article>";
+                }
+            } else {
+                echo "0 results";
+            }
+            
+            $conn->close();
+        ?>
     </section>
 
     <footer>
