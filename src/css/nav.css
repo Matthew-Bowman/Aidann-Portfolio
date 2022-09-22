@@ -64,7 +64,6 @@ nav {
 
     /* Create transition */
     transition: 0.3s;
-    left: 0px;
 }
 
 .nav-items a:not(.active):hover:after, .nav-items .active {
