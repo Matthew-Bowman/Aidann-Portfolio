@@ -27,10 +27,12 @@
             $firstrow = $result->fetch_row();
             
             $uid = $firstrow[0];
+            $fetchedUsername = $firstrow[1];
             $hashedPwd = $firstrow[2];
 
             if(password_verify($pwd, $hashedPwd)) {
-                echo "Success";
+                session_start();
+                $_SESSION["username"] = $fetchedUsername;
             } else {
                 header("Location: ./login.html");
                 die();
