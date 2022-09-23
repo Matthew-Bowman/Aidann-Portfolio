@@ -1,5 +1,4 @@
 <?php
-// echo password_hash("password", PASSWORD_DEFAULT);
     if(isset($_POST["submit"])) {
         // Assign Variables
         $servername = getenv("db_host");
