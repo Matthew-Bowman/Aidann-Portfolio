@@ -30,7 +30,7 @@
                 <li><a href="./works.php" class="paragraph">Works</a></li>
                 <li><a href="./reviews.php" class="paragraph active">Reviews</a></li>
                 <li><a href="#" class="paragraph">Status</a></li>
-                <li><a href="./login.php"><img src="./images/Icons/Profile.png" /></a></li>
+                <li><a href="./login.html"><img src="./images/Icons/Profile.png" /></a></li>
             </ul>
         </section>
     </nav>
