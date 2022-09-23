@@ -33,6 +33,9 @@
             if(password_verify($pwd, $hashedPwd)) {
                 session_start();
                 $_SESSION["username"] = $fetchedUsername;
+
+                header("Location: ./admin.php");
+                die();
             } else {
                 header("Location: ./login.html");
                 die();
