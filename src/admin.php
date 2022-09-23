@@ -1,3 +1,11 @@
+<?php 
+    session_start();
+    if(!isset($_SESSION["username"])) {
+        header("Location: ./login.html");
+        die();
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,7 +52,9 @@
             <img src="./images/Icons/Admin.png" height="48" />
         </article>
         <article class="subheading">
-            <p>Aidann</p>
+            <?php 
+                echo "<p>".$_SESSION["username"]."</p>";
+            ?>
             <p>Admin</p>
         </article>
     </header>
