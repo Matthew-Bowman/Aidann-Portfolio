@@ -1,54 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+// echo password_hash("password", PASSWORD_DEFAULT);
+    if(isset($_POST["submit"])) {
+        // Assign Variables
+        $servername = getenv("db_host");
+        $username = getenv("db_user");
+        $dbname = getenv("db_name");
+        
+        $usr = $_POST["username"];
+        $pwd = $_POST["password"];
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+        // Create connection
+        $conn = new mysqli($servername, $username, "", $dbname);
 
-    <!-- Import Fonts -->
-    <link rel="stylesheet" type="text/css" href="./css/ECB.css">
-    <link rel="stylesheet" type="text/css" href="./css/typography.css">
-    <!-- Imported Nav & Footer Styles -->
-    <link rel="stylesheet" type="text/css" href="./css/nav.css">
-    <link rel="stylesheet" type="text/css" href="./css/footer.css">
-    <!-- Imported Global Styles -->
-    <link rel="stylesheet" type="text/css" href="./css/global.css">
-    <!-- Imported Page Specific Styles -->
-    <link rel="stylesheet" type="text/css" href="./css/login.css">
-</head>
+        // Check connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
 
-<body>
-    <nav>
-        <section class="nav-brand">
-            <a href="./index.html"><img src="./images/Logo.png" /></a>
-        </section>
-        <section class="nav-items">
-            <ul>
-                <li><a href="./index.html" class="paragraph">Home</a></li>
-                <li><a href="./works.php" class="paragraph">Works</a></li>
-                <li><a href="./reviews.php" class="paragraph">Reviews</a></li>
-                <li><a href="#" class="paragraph">Status</a></li>
-                <li><a href="./login.php" class="active"><img src="./images/Icons/Profile.png" /></a></li>
-            </ul>
-        </section>
-    </nav>
+        $stmt = $conn->prepare("SELECT * FROM users WHERE username = ?;");
+        $stmt->bind_param("s", $usr);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
-    <section class="login-container">
-        <h1 class="heading light">Login</h1>
-        <form>
-            <div class="input-container">
-                <img src="./images/Icons/User.png" />
-                <input type="text" placeholder="Username" class="heading" />
-            </div>
-            <div class="input-container">
-                <img src="./images/Icons/Password.png" />
-                <input type="password" placeholder="Password" class="heading" />
-            </div>
-            <button type="submit" class="heading">Login</button>
-        </form>
-    </section>
-</body>
+        // Checks if username is in database
+        if($result->num_rows > 0){
+            $firstrow = $result->fetch_row();
+            
+            $uid = $firstrow[0];
+            $hashedPwd = $firstrow[2];
 
-</html>
+            if(password_verify($pwd, $hashedPwd)) {
+                echo "Success";
+            } else {
+                header("Location: ./login.html");
+                die();
+            }
+        } else {
+            header("Location: ./login.html");
+            die();
+        }
+
+    } else {
+        header("Location: ./login.html");
+        die();
+    }
+?>
