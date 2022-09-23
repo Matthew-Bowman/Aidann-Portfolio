@@ -63,8 +63,8 @@
         <article class="panel">
             <ul class="subheading medium">
                 <li class="panel-subtitle subheading bold"><span></span>Edit</li>
-                <li class="panel-option active"><img src="./images/Icons/Pencil.png" width="32" />Edit Works</li>
-                <li class="panel-option"><img src="./images/Icons/Pencil.png" width="32" />Edit Home</li>
+                <li class="panel-option active"><img src="./images/Icons/Pencil.png" width="32" />Edit Home</li>
+                <li class="panel-option"><img src="./images/Icons/Pencil.png" width="32" />Edit Works</li>
                 <li class="panel-option"><img src="./images/Icons/Pencil.png" width="32" />Edit Reviews</li>
                 <li class="panel-option"><img src="./images/Icons/Pencil.png" width="32" />Edit Status</li>
                 <li class="panel-subtitle subheading bold"><span></span>Website</li>
