@@ -77,6 +77,24 @@
             </ul>
         </article>
 
+        <!-- Connect to Database -->
+        <?php 
+        
+            // Assign Variables
+            $servername = getenv("db_host");
+            $username = getenv("db_user");
+            $dbname = getenv("db_name");
+            
+            // Create connection
+            $conn = new mysqli($servername, $username, "", $dbname);
+
+            // Check connection
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+        
+        ?>
+
         <article class="content">
             <section id="option-home">
                 <h1>Home</h1>
