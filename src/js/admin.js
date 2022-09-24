@@ -110,3 +110,33 @@ placeholders.forEach(placeholder => {
     placeholder.parentElement.insertBefore(fieldset, placeholder);
   });
 });
+
+// Check for deleting
+const deleteButtons = document.querySelectorAll(".delete-button");
+
+deleteButtons.forEach(button => {
+  button.addEventListener(`click`, e => {
+    e.preventDefault();
+
+    const id = button.getAttribute(`data-id`);
+
+    let form = document.createElement("form");
+    form.setAttribute("action", "./deleteWorks.php");
+    form.setAttribute("method", "post");
+
+    let idInput = document.createElement("input");
+    idInput.setAttribute("type", "hidden");
+    idInput.setAttribute("value", id);
+    idInput.setAttribute("name", "id");
+
+    let submit = document.createElement("input");
+    submit.setAttribute("type", "submit");
+    submit.setAttribute("name", "submit-button");
+
+    form.appendChild(idInput);
+    form.appendChild(submit);
+
+    document.body.appendChild(form);
+    form.submit()
+  })
+});

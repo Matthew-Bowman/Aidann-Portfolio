@@ -161,3 +161,13 @@ header {
 .card-placeholder:hover {
     cursor: pointer;
 }
+
+.delete-button {
+    user-select: none;
+    color: hsl(0, 100%, 80%);
+    border: 1px solid hsl(0, 100%, 80%);
+}
+
+.delete-button:hover {
+    cursor: pointer;
+}
