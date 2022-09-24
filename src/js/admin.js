@@ -1,6 +1,8 @@
-// Admin Panel Selections
+// Assign Variables
 const options = document.querySelectorAll(`.panel-option`);
+const textareas = document.querySelectorAll(".auto-resize")
 
+// Admin Panel Selections
 options.forEach(option => {
   option.addEventListener(`click`, (e) => {
 
@@ -15,6 +17,9 @@ options.forEach(option => {
 
     // Make selected section visible
     document.querySelector(`#option-${option.id.split('-')[1]}`).style.display = "block";
+  
+    // Resize textareas
+    textareas.forEach(textarea => textarea.style.height = textarea.scrollHeight + "px");
   });
 });
 
@@ -26,9 +31,9 @@ document.querySelectorAll(".img-url").forEach(input => {
 })
 
 // Auto resize textarea
-let textareas = document.querySelectorAll(".auto-resize")
 
 textareas.forEach(textarea => {
+  textarea.style.height = textarea.scrollHeight + "px";
   textarea.addEventListener("input", e => {
     textarea.style.height = 0;
     textarea.style.height = textarea.scrollHeight + "px";

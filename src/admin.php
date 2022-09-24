@@ -113,10 +113,11 @@
                                 echo "<fieldset class='option-card' id='".$row["work_id"]."'>";
                                 echo     "<img src='".$row["thumbnail"]."' width='540px' height='375px'>";
                                 echo     "<div class='card-footer'>";
-                                echo         "<input name='thumbnail' class='paragraph img-url' value='".$row["thumbnail"]."' />";
-                                echo         "<input name='type' class='subheading blue' value='".$row["type"]."'>";
-                                echo         "<input name='name' class='heading' value='".$row["name"]."'>";
-                                echo         "<textarea name='description' class='paragraph auto-resize'>".$row["description"]."</textarea>";
+                                echo         "<input name='id[]' value='".$row["work_id"]."' type='hidden' />";
+                                echo         "<input name='thumbnail[]' class='paragraph img-url' value='".$row["thumbnail"]."'  maxlength='255' />";
+                                echo         "<input name='type[]' class='subheading blue' value='".$row["type"]."' maxlength='255' />";
+                                echo         "<input name='name[]' class='heading' value='".$row["name"]."' maxlength='255' />";
+                                echo         "<textarea name='description[]' class='paragraph auto-resize' maxlength='255'>".$row["description"]."</textarea>";
                                 echo     "</div>";
                                 echo "</fieldset>";
                             }
