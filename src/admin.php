@@ -123,6 +123,17 @@
                             }
                         }
                     ?>
+                    <div class="option-card card-placeholder">
+                        <div class="img-placeholder">
+                            <h2 class="title">Placeholder</h2>
+                            <p class="paragraph">Click to create card</p>
+                        </div>
+                        <div class="card-footer">
+                            <h3 class="subeading blue">Type</h3>
+                            <h2 class="heading">Name</h2>
+                            <p class="paragraph">Description</p>
+                        </div>
+                    </div>
                     <button class="works-submit subheading" name="submit" type="submit">Submit</button>
                 </form>
             </section>

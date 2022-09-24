@@ -58,6 +58,14 @@
                     
                     // Redirect back
                     header("Location: ./admin.php");
+                } else {
+                    // Insert Data
+                    $stmt = $conn->prepare("INSERT INTO works (type, name, description, thumbnail) VALUES (?, ?, ?, ?)");
+                    $stmt->bind_param("ssss", $work["type"], $work["name"], $work["description"], $work["thumbnail"]);
+                    $stmt->execute();
+                    
+                    // Redirect back
+                    header("Location: ./admin.php");
                 }
             }
         }

@@ -140,3 +140,24 @@ header {
     margin: 32px 0;
     padding: 8px 0;
 }
+
+.thumbnail {
+    width: 540px;
+    height: 375px;
+}
+
+.img-placeholder {
+    display: block;
+    background-color: hsl(0, 0%, 15%);
+    width: 540px;
+    height: 375px;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-placeholder:hover {
+    cursor: pointer;
+}

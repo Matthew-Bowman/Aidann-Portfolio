@@ -39,3 +39,74 @@ textareas.forEach(textarea => {
     textarea.style.height = textarea.scrollHeight + "px";
   })
 })
+
+// Create new fieldset in form for card creation
+const placeholders = document.querySelectorAll(`.card-placeholder`);
+
+placeholders.forEach(placeholder => {
+  placeholder.addEventListener("click", e => {
+    // Create Elements
+    let fieldset = document.createElement(`fieldset`);
+    let thumbnail = document.createElement(`img`);
+    let cardFooter = document.createElement(`div`);
+    let idInput = document.createElement(`input`);
+    let thumbnailInput = document.createElement(`input`);
+    let typeInput = document.createElement(`input`);
+    let nameInput = document.createElement(`input`);
+    let descriptionInput = document.createElement(`textarea`);
+  
+    // Give Attributes to Elements
+    fieldset.classList.add("option-card");
+
+    thumbnail.src = "";
+    thumbnail.classList.add("thumbnail");
+
+    cardFooter.classList.add("card-footer");
+
+    idInput.setAttribute("type", "hidden");
+    idInput.setAttribute("value", "NULL");
+    idInput.setAttribute("name", "id[]");
+
+    thumbnailInput.classList.add("paragraph", "img-url");
+    thumbnailInput.setAttribute("name", "thumbnail[]");
+    thumbnailInput.setAttribute("value", "");
+    thumbnailInput.setAttribute("maxlength", "255");
+
+    typeInput.classList.add("subheading", "blue");
+    typeInput.setAttribute("name", "type[]");
+    typeInput.setAttribute("value", "Type");
+    typeInput.setAttribute("maxlength", "255");
+
+    nameInput.classList.add("heading");
+    nameInput.setAttribute("name", "name[]");
+    nameInput.setAttribute("value", "Name");
+    nameInput.setAttribute("maxlength", "255");
+
+    descriptionInput.classList.add("paragraph", "auto-resize");
+    descriptionInput.setAttribute("name", "description[]");
+    descriptionInput.textContent = "Description";
+    descriptionInput.setAttribute("maxlength", "255");
+
+    // Add Event Listeners
+    thumbnailInput.addEventListener("change", e => {
+      thumbnailInput.parentElement.parentElement.querySelector("img").src = thumbnailInput.value;
+    })
+
+    descriptionInput.addEventListener("input", e => {
+      descriptionInput.style.height = 0;
+      descriptionInput.style.height = descriptionInput.scrollHeight + "px";
+    })
+
+    // Append Elements
+    cardFooter.appendChild(idInput);
+    cardFooter.appendChild(thumbnailInput);
+    cardFooter.appendChild(typeInput);
+    cardFooter.appendChild(nameInput);
+    cardFooter.appendChild(descriptionInput);
+    
+    fieldset.appendChild(thumbnail);
+    fieldset.appendChild(cardFooter);
+
+    placeholder.parentElement.insertBefore(fieldset, placeholder);
+  });
+});
