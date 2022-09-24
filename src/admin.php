@@ -118,13 +118,13 @@
                                 echo         "<input name='type[]' class='subheading blue' value='".$row["type"]."' maxlength='255' />";
                                 echo         "<input name='name[]' class='heading' value='".$row["name"]."' maxlength='255' />";
                                 echo         "<textarea name='description[]' class='paragraph auto-resize' maxlength='255'>".$row["description"]."</textarea>";
-                                echo         "<button class='subheading delete-button' data-id='".$row["work_id"]."'>Delete</button>";
+                                echo         "<button class='subheading delete-button' id='delete-work' data-id='".$row["work_id"]."'>Delete</button>";
                                 echo     "</div>";
                                 echo "</fieldset>";
                             }
                         }
                     ?>
-                    <div class="option-card card-placeholder">
+                    <div class="option-card card-placeholder" id="placeholder-work">
                         <div class="img-placeholder">
                             <h2 class="title">Placeholder</h2>
                             <p class="paragraph">Click to create card</p>
@@ -139,7 +139,43 @@
                 </form>
             </section>
             <section id="option-reviews">
-                <h1>Reviews</h1>
+                <h1 class="heading">Reviews</h1>
+                <form action="./addReview.php" method="post">
+                    <?php
+                    
+                        $sql = "SELECT * FROM reviews;";
+                        $result = $conn->query($sql);
+                        
+                        if ($result->num_rows > 0) {
+                            // output data of each row
+                            while($row = $result->fetch_assoc()) {
+                                echo "<fieldset class='option-card' id='".$row["review_id"]."'>";
+                                echo     "<img src='".$row["thumbnail"]."' width='540px' height='375px'>";
+                                echo     "<div class='card-footer'>";
+                                echo         "<input name='id[]' value='".$row["review_id"]."' type='hidden' />";
+                                echo         "<input name='thumbnail[]' class='paragraph img-url' value='".$row["thumbnail"]."'  maxlength='255' />";
+                                echo         "<input name='rating[]' class='subheading blue' value='".$row["rating"]."' maxlength='255' />";
+                                echo         "<input name='name[]' class='heading' value='".$row["name"]."' maxlength='255' />";
+                                echo         "<textarea name='description[]' class='paragraph auto-resize' maxlength='255'>".$row["description"]."</textarea>";
+                                echo         "<button class='subheading delete-button' id='delete-review' data-id='".$row["review_id"]."'>Delete</button>";
+                                echo     "</div>";
+                                echo "</fieldset>";
+                            }
+                        }
+                    ?>
+                    <div class="option-card card-placeholder" id="placeholder-review">
+                        <div class="img-placeholder">
+                            <h2 class="title">Placeholder</h2>
+                            <p class="paragraph">Click to create card</p>
+                        </div>
+                        <div class="card-footer">
+                            <h3 class="subeading blue">Type</h3>
+                            <h2 class="heading">Name</h2>
+                            <p class="paragraph">Description</p>
+                        </div>
+                    </div>
+                    <button class="works-submit subheading" name="submit" type="submit">Submit</button>
+                </form>
             </section>
             <section id="option-status">
                 <h1>Status</h1>

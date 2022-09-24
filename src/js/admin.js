@@ -73,8 +73,14 @@ placeholders.forEach(placeholder => {
     thumbnailInput.setAttribute("maxlength", "255");
 
     typeInput.classList.add("subheading", "blue");
-    typeInput.setAttribute("name", "type[]");
-    typeInput.setAttribute("value", "Type");
+    // Check type
+    if(placeholder.id == `placeholder-work`) {
+      typeInput.setAttribute("name", "type[]");
+      typeInput.setAttribute("value", "Type");
+    } else if (placeholder.id == `placeholder-review`) {
+      typeInput.setAttribute("name", "rating[]");
+      typeInput.setAttribute("value", "Rating");
+    }
     typeInput.setAttribute("maxlength", "255");
 
     nameInput.classList.add("heading");
@@ -121,7 +127,8 @@ deleteButtons.forEach(button => {
     const id = button.getAttribute(`data-id`);
 
     let form = document.createElement("form");
-    form.setAttribute("action", "./deleteWorks.php");
+    if(button.id == `delete-work`) form.setAttribute("action", "./deleteWorks.php");
+    if(button.id == `delete-review`) form.setAttribute("action", "./deleteReview.php");
     form.setAttribute("method", "post");
 
     let idInput = document.createElement("input");
