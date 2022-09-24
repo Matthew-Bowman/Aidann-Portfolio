@@ -15,12 +15,12 @@ let scrollIndex = 0;
 const scrollButton = document.getElementById(`scroll-button`);
 
 scrollButton.addEventListener(`click`, () => {
-  if (scrollIndex < scrollIds.length - 1) processScrollDown();
+  if (scrollIndex < scrollIds.length - 1) processScroll("increment");
 });
 
 document.addEventListener(`wheel`, (e) => {
-  if (e.deltaY < 0 && scrollIndex > 0) processScrollUp();
-  else if (e.deltaY > 0 && scrollIndex < scrollIds.length - 1) processScrollDown();
+  if (e.deltaY < 0 && scrollIndex > 0) processScroll("decrement");
+  else if (e.deltaY > 0 && scrollIndex < scrollIds.length - 1) processScroll("increment");
 
   // processScroll();
 });
@@ -53,7 +53,6 @@ function ScrollSections(direction) {
   else scrollButton.style.display = `flex`;
 
   let elem = document.querySelector(`#${scrollIds[scrollIndex]}`);
-  console.log(scrollIndex)
   elem.classList.add(`selected`);
   window.scrollTo(
     0,
@@ -61,5 +60,4 @@ function ScrollSections(direction) {
   );
 }
 
-const processScrollDown = debounce(() => ScrollSections("increment"));
-const processScrollUp = debounce(() => ScrollSections("decrement"));
+const processScroll = debounce(ScrollSections);
