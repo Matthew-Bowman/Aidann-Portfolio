@@ -17,3 +17,20 @@ options.forEach(option => {
     document.querySelector(`#option-${option.id.split('-')[1]}`).style.display = "block";
   });
 });
+
+// Change Thumbnail when URL Changed
+document.querySelectorAll(".img-url").forEach(input => {
+  input.addEventListener("change", e => {
+    input.parentElement.parentElement.querySelector("img").src = input.value;
+  })
+})
+
+// Auto resize textarea
+let textareas = document.querySelectorAll(".auto-resize")
+
+textareas.forEach(textarea => {
+  textarea.addEventListener("input", e => {
+    textarea.style.height = 0;
+    textarea.style.height = textarea.scrollHeight + "px";
+  })
+})

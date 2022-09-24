@@ -1,3 +1,7 @@
+body {
+    padding-bottom: 32px;
+}
+
 nav {
     position: relative;
 }
@@ -83,4 +87,57 @@ header {
 /* Main Content Styles */
 .content > *:not(.content > *:first-of-type) {
     display: none;
+}
+
+.content {
+    margin-left: 64px;
+}
+
+.option-card {
+    border: none;
+    padding: 0;
+    background-color: #1c1c1c;
+    overflow: hidden;
+    max-width: 540px;
+    border-radius: 16px;
+    margin-top: 32px;
+}
+
+.option-card img {
+    object-fit:contain;
+}
+
+.option-card .img-url {
+    width: 100%;
+}
+
+.option-card textarea {
+    width: 100%;
+    resize: none;
+    overflow-y: hidden;
+    height: auto;
+}
+
+.option-card input, .option-card textarea, button {
+    background-color: #1c1c1c;
+    color: #ffffff;
+    border: 1px solid #333333;
+}
+
+.option-card input {
+    margin-bottom: 8px;    
+}
+
+.card-footer {
+    padding: 16px;
+}
+
+.blue {
+    color: #52b5ef;
+}
+
+.works-submit {
+    width: 100%;
+    margin: 32px 0;
+    padding: 8px 0;
 }

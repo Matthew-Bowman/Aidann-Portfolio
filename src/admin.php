@@ -100,7 +100,30 @@
                 <h1>Home</h1>
             </section>
             <section id="option-works">
-                <h1>Works</h1>
+                <h1 class="heading">Works</h1>
+                <form action="./addWorks.php" method="post">
+                    <?php
+                    
+                        $sql = "SELECT * FROM works;";
+                        $result = $conn->query($sql);
+                        
+                        if ($result->num_rows > 0) {
+                            // output data of each row
+                            while($row = $result->fetch_assoc()) {
+                                echo "<fieldset class='option-card' id='".$row["work_id"]."'>";
+                                echo     "<img src='".$row["thumbnail"]."' width='540px' height='375px'>";
+                                echo     "<div class='card-footer'>";
+                                echo         "<input name='thumbnail' class='paragraph img-url' value='".$row["thumbnail"]."' />";
+                                echo         "<input name='type' class='subheading blue' value='".$row["type"]."'>";
+                                echo         "<input name='name' class='heading' value='".$row["name"]."'>";
+                                echo         "<textarea name='description' class='paragraph auto-resize'>".$row["description"]."</textarea>";
+                                echo     "</div>";
+                                echo "</fieldset>";
+                            }
+                        }
+                    ?>
+                    <button class="works-submit subheading" name="submit" type="submit">Submit</button>
+                </form>
             </section>
             <section id="option-reviews">
                 <h1>Reviews</h1>
