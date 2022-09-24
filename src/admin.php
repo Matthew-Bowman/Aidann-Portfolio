@@ -63,22 +63,42 @@
         <article class="panel">
             <ul class="subheading medium">
                 <li class="panel-subtitle subheading bold"><span></span>Edit</li>
-                <li class="panel-option active"><img src="./images/Icons/Pencil.png" width="32" />Edit Home</li>
-                <li class="panel-option"><img src="./images/Icons/Pencil.png" width="32" />Edit Works</li>
-                <li class="panel-option"><img src="./images/Icons/Pencil.png" width="32" />Edit Reviews</li>
-                <li class="panel-option"><img src="./images/Icons/Pencil.png" width="32" />Edit Status</li>
+                <li class="panel-option active" id="selecetor-home"><img src="./images/Icons/Pencil.png" width="32" />Edit Home</li>
+                <li class="panel-option" id="selecetor-works"><img src="./images/Icons/Pencil.png" width="32" />Edit Works</li>
+                <li class="panel-option" id="selecetor-reviews"><img src="./images/Icons/Pencil.png" width="32" />Edit Reviews</li>
+                <li class="panel-option" id="selecetor-status"><img src="./images/Icons/Pencil.png" width="32" />Edit Status</li>
                 <li class="panel-subtitle subheading bold"><span></span>Website</li>
-                <li class="panel-option"><img src="./images/Icons/Pencil.png" width="32" />Edit Status</li>
+                <li class="panel-option" id="selecetor-webstatus"><img src="./images/Icons/Pencil.png" width="32" />Edit Status</li>
                 <li class="panel-subtitle subheading bold"><span></span>Account</li>
-                <li class="panel-option"><img src="./images/Icons/CircleLock.png" width="32" />Reset Pass</li>
-                <li class="panel-option">
+                <li class="panel-option" id="selecetor-pass"><img src="./images/Icons/CircleLock.png" width="32" />Reset Pass</li>
+                <li class="panel-option" id="selecetor-auth">
                     <div><img src="./images/Icons/Lock.png" width="24" /></div>2-Step Auth
                 </li>
             </ul>
         </article>
 
         <article class="content">
-
+            <section id="option-home">
+                <h1>Home</h1>
+            </section>
+            <section id="option-works">
+                <h1>Works</h1>
+            </section>
+            <section id="option-reviews">
+                <h1>Reviews</h1>
+            </section>
+            <section id="option-status">
+                <h1>Status</h1>
+            </section>
+            <section id="option-webstatus">
+            <h1>Website Status</h1>
+            </section>
+            <section id="option-pass">
+                <h1>Password</h1>
+            </section>
+            <section id="option-auth">
+                <h1>2-Factor-Authentication</h1>
+            </section>
         </article>
     </section>
 </body>

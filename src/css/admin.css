@@ -79,3 +79,8 @@ header {
     background-image: linear-gradient(to right, #1b6687 35%, #1b1d1e 60%);
     color: #35b1ea;
 }
+
+/* Main Content Styles */
+.content > *:not(.content > *:first-of-type) {
+    display: none;
+}
