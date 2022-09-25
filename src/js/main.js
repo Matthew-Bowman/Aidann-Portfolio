@@ -28,7 +28,8 @@ scrollButton.addEventListener(`click`, () => {
 });
 
 document.addEventListener(`wheel`, (e) => {
-  processScroll(e.deltaY)
+  if(window.innerWidth >= 800)
+    processScroll(e.deltaY)
 }, {passive: false});
 
 document.addEventListener("mousewheel", () => {}, {passive: false})
