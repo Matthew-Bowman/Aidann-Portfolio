@@ -33,11 +33,11 @@
 <body>
     <nav>
         <section class="nav-brand">
-            <a href="./index.html"><img src="./images/Logo.png" /></a>
+            <a href="./index.php"><img src="./images/Logo.png" /></a>
         </section>
         <section class="nav-items">
             <ul>
-                <li><a href="./index.html" class="paragraph">Home</a></li>
+                <li><a href="./index.php" class="paragraph">Home</a></li>
                 <li><a href="./works.php" class="paragraph">Works</a></li>
                 <li><a href="./reviews.php" class="paragraph">Reviews</a></li>
                 <li><a href="#" class="paragraph">Status</a></li>
