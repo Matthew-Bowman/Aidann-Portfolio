@@ -97,7 +97,7 @@
 
         <article class="content">
             <section id="option-home">
-                <h1>Home</h1>
+                <h1 class="heading">Home</h1>
             </section>
             <section id="option-works">
                 <h1 class="heading">Works</h1>
