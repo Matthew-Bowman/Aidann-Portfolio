@@ -1,6 +1,9 @@
 // Scrolling Functionality
 const scrollIndicators = document.querySelectorAll(`.scroll-indicator`);
 
+// Reset Scrolling
+history.scrollRestoration = `manual`;
+
 scrollIndicators.forEach((indicator) => {
   indicator.addEventListener(`click`, () => {
     let scrollElem = document.querySelector(`#${indicator.id.split(`-`)[1]}`);
