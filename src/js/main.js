@@ -21,15 +21,15 @@ let scrollIndex = 0;
 const scrollButton = document.getElementById(`scroll-button`);
 
 scrollButton.addEventListener(`click`, () => {
-  if (scrollIndex < scrollIds.length - 1) processScroll("increment");
+  if (scrollIndex < scrollIds.length - 1) processScroll(1);
 });
 
 document.addEventListener(`wheel`, (e) => {
-  if (e.deltaY < 0 && scrollIndex > 0) processScroll("decrement");
-  else if (e.deltaY > 0 && scrollIndex < scrollIds.length - 1) processScroll("increment");
+  processScroll(e.deltaY)
+}, {passive: false});
 
-  // processScroll();
-});
+document.addEventListener("mousewheel", () => {}, {passive: false})
+document.addEventListener("DOMMouseScroll", () => {}, {passive: false})
 
 function debounce(func, timeout = 300){
   let timer;
@@ -45,9 +45,9 @@ function debounce(func, timeout = 300){
 }
 
 function ScrollSections(direction) {
-  if(direction == "increment")
+  if(direction > 0 && scrollIndex < scrollIds.length-1)
     scrollIndex++;
-  else
+  else if(direction < 0 && scrollIndex > 0)
     scrollIndex--;
 
   // Reset selected section
@@ -55,8 +55,8 @@ function ScrollSections(direction) {
     document.getElementById(section).classList.remove(`selected`);
   });
 
-  if (scrollIndex == scrollIds.length - 1) scrollButton.style.display = `none`;
-  else scrollButton.style.display = `flex`;
+  if (scrollIndex == scrollIds.length - 1) scrollButton.style.opacity = 0;
+  else scrollButton.style.opacity = 1;
 
   let elem = document.querySelector(`#${scrollIds[scrollIndex]}`);
   elem.classList.add(`selected`);

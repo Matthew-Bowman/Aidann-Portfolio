@@ -72,6 +72,7 @@ body>section>article:last-of-type>* {
     justify-content: center;
 
     user-select: none;
+    transition: 500ms linear;
 }
 
 .indicator-container:hover {
