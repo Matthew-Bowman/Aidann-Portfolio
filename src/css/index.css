@@ -42,15 +42,21 @@ body>section>article:last-of-type>* {
 .contact-handle {
     display: flex;
     align-items: center;
+    gap: 16px;
 }
 
 .contact-handle img {
     height: 32px;
-    margin-right: 16px;
 }
 
-.content-handle>*:first-of-type {
+/* .content-handle>*:first-of-type {
     margin-right: 16px;
+} */
+
+/* Style Icons */
+.icon {
+    /* width: 32px; */
+    height: 32px;
 }
 
 /* Scroll Indicator Styles */

@@ -9,7 +9,13 @@ scrollIndicators.forEach((indicator) => {
   });
 });
 
-const scrollIds = [`home`, `about`, `prices`, `terms`, `contact`];
+let scrollIds = [`home`];
+
+document.body.childNodes.forEach(node => {
+  if(node.id)
+    if(node.id.startsWith("scrollable-"))
+      scrollIds.push(node.id);
+});
 
 let scrollIndex = 0;
 const scrollButton = document.getElementById(`scroll-button`);

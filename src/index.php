@@ -17,6 +17,9 @@
     <!-- Imported Page Specific Styles -->
     <link rel="stylesheet" type="text/css" href="./css/index.css">
 
+    <!-- Import Google Font Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,700,1,0" rel="stylesheet">
+
     <!-- Import JavaScript -->
     <script src="./js/main.js" type="text/javascript" defer></script>
 </head>
@@ -48,90 +51,93 @@
         <!-- <img src="./images/Icons/CircleDown.svg" class="scroll-indicator" id="scroll-about" /> -->
     </header>
 
-    <section id="about">
-        <article class="section-title">
-            <span></span>
-            <h5 class="subheading">About me</h5>
-            <span><img src="./images/Icons/About.png" class="icon"></span>
-        </article>
-        <article>
-            <h4 class="heading">Learn more about me here!</h4>
-            <p class="paragraph">Heya! My name is Aidann and I am 13 years old. I am an experienced UI<br>designer with over 3 years of experience who really enjoys UI designing!</p>
-            <p class="paragraph">Currently I'm studying in one of the best colleges (high school) in my country,<br>and I'm studying at the 8th grade right now.</p>  
-            <!-- <img src="./images/Icons/CircleDown.svg" class="scroll-indicator" id="scroll-prices" /> -->
-        </article>
-    </section>
+    <?php
     
-    <section id="prices">
-        <article class="section-title">
-            <span></span>
-            <h5 class="subheading">Prices</h5>
-            <span><img src="./images/Icons/PriceTag.png" class="icon"></span>
-        </article>
-        <article>
-            <h4 class="heading">Check out the prices of my commissions!</h4>
-            <p class="paragraph">Here are the prices of my commissions:</p>
-            <ul class="paragraph">
-                <li>Small Package: 7,000-15,000 Robux (3-5 Frames)</li>
-                <li>Basic Package: 20,000-30,000 Robux (5-10 Frames)</li>
-                <li>Large Package: 30,000-45,000 Robux (10-15 Frames)</li>
-                <li>Premium Package: 45,000-60,000 Robux (15-20 Frames)</li>
-                <li>Full Game Package: 80,000 Robux (Full Game UI)</li>
-            </ul>
-            <p class="paragraph">You can check out the past works I've ever done in the Works page.</p>
-            <!-- <img src="./images/Icons/CircleDown.svg" class="scroll-indicator" id="scroll-terms" /> -->
-        </article>
-    </section>
+    // Connect to database
+    // Assign Variables
+    $servername = getenv("db_host");
+    $username = getenv("db_user");
+    $dbname = getenv("db_name");
     
-    <section id="terms">
-        <article class="section-title">
-            <span></span>
-            <h5 class="subheading">Terms of Use</h5>
-            <span><img src="./images/Icons/ToS.png" class="icon"></span>
-        </article>
-        <article>
-            <h4 class="heading">Check out the terms of use of my commissions!</h4>
-            <p class="paragraph">Please read the terms before you send me a DM!</p>
-            <ul class="paragraph">
-                <li>Scripting and studio importing are NOT included for all packages/orders.</li>
-                <li>Files will be distributed in PSD files.</li>
-                <li>I have the right to cancel any orders without giving out refunds.</li>
-                <li>No refunds!</li>
-                <li>Prices are negotiable!</li>
-                <li>You have to pay 30% tax if you're paying with t-shirt.</li>
-                <li>All USD price depends on the DevEx rates.</li>
-                <li>All robux price depends on the amount of frames.</li>
-                <li>I accept Paypal for USD payments.</li>
-                <li>Prices may increase depends on the amount and complexity of work.</li>
-                <li>Payments are needed to be done before starting works.</li>
-                <li>I only do packages, I don't do single frame/button.</li>
-                <li>I don't design vectors for UI designs.</li>
-                <li>After your payment that means you automatically agree to these terms above.</li>
-            </ul>
-            <!-- <img src="./images/Icons/CircleDown.svg" class="scroll-indicator" id="scroll-contact" /> -->
-        </article>
-    </section>
+    // Create connection
+    $conn = new mysqli($servername, $username, "", $dbname);
+
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    $sql = "SELECT * FROM homepage ORDER BY position ASC;";
+    $result = $conn->query($sql);
     
-    <section id="contact">
-        <article class="section-title">
-            <span></span>
-            <h5 class="subheading">Contacts</h5>
-            <span><img src="./images/Icons/Contact.png" class="icon"></span>
-        </article>
-        <article>
-            <h4 class="heading">Check out ways you can contact me here!</h4>
-            <p class="heading">You can contact me via:</p>
-            <h2 class="title">Discord and Twitter.</h2>
-            <span class="contact-handle">
-                <img src="./images/Icons/Discord.png" class="icon" />
-                <h5 class="subheading">Aidann#6503</h5>
-            </span>
-            <span class="contact-handle">
-                <img src="./images/Icons/Twitter.png" class="icon" />
-                <h5 class="subheading">@3rnxz</h5>
-            </span>
-        </article>
-    </section>
+    if ($result->num_rows > 0) {
+        // Initialise Variables
+        $sectionCounter = 0;
+        $previousType = null;
+        
+        // output data of each row
+        while($row = $result->fetch_assoc()) {
+            // Assign Variables
+            $type = $row["type"];
+            $content = $row["content"];
+
+            // Write Subtitles
+            if($type == "subtitle"){
+                $sectionCounter++;
+                if($sectionCounter > 1)
+                    echo"</article></section>";
+                echo "<section id='scrollable-".$sectionCounter."'>";
+
+                echo "<article class='section-title'>";
+                echo "<span></span>";
+                echo "<h5 class='subheading'>".$row["content"]."</h5>";
+            }
+
+            if($type == "icon-google" and $previousType == "subtitle") {
+                echo "<span class='material-symbols-outlined' style='font-size: 48px'>".$content."</span>";
+            } elseif ($type == "icon-url" and $previousType == "subtitle") {
+                echo "<span><img src='".$content."' class='icon' /></span>";
+            }
+
+            if ($previousType == "subtitle")
+                echo "</article><article>";
+
+            // Write Content
+            if($type == "list-item" and $previousType != "list-item")
+                echo "<ul class='paragraph'>";
+            if($type == "list-item")
+                echo "<li>".$content."</li>";;
+            if($type != "list-item" and $previousType == "list-item")
+                echo "</ul>";
+
+            if($type == "title")
+                echo "<h2 class='title'>".$content."</h2>";
+            if($type == "heading")
+                echo "<h4 class='heading'>".$content."</h4>";
+            if($type == "inline-subheading")
+                echo "<h5 class='subheading inline'>".$content."</h5></span>";
+            if($type == "paragraph-heading")
+                echo "<p class='heading'>".$content."</p>";
+            if($type == "paragraph")
+                echo "<p class='paragraph'>".$content."</p>";
+
+            if($type == "icon-url" and $previousType != "subtitle")
+                echo "<span class='contact-handle'><img src='".$content."' class='icon' />";
+            if($type == "icon-google" and $previousType != "subtitle")
+                echo "<span class='contact-handle'><span class='material-symbols-outlined' style='font-size: 32px'>".$content."</span>";
+
+            $previousType = $row["type"];
+        }
+
+        if($previousType == "list-type")
+            echo "</ul>";
+
+        echo "</article></section>";
+    }
+    
+    $conn->close();
+    
+    ?>
     
     <div class="indicator-container" id="scroll-button">
         <div class="arrow-container">
