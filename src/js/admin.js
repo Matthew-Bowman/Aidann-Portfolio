@@ -147,3 +147,179 @@ deleteButtons.forEach(button => {
     form.submit()
   })
 });
+
+// Check for homepage events
+const homepageButtons = document.querySelectorAll(`.homepage-button`);
+
+homepageButtons.forEach(btn => {
+  btn.addEventListener(`click`, e => {
+    e.preventDefault();
+    let fieldset = (btn.parentElement.parentElement);
+
+    switch(btn.id) {
+      case "up":
+        if(fieldset.previousElementSibling)
+          fieldset.parentElement.insertBefore(fieldset, fieldset.previousElementSibling);
+        break;
+      case "delete":
+        fieldset.remove();
+        break;
+      case "down":
+        if(fieldset.nextElementSibling)
+          fieldset.parentElement.insertBefore(fieldset.nextElementSibling, fieldset);
+        break;
+    }
+  })
+})
+
+// Add or remove indent dependant on select type 
+const homepageSelects = document.querySelectorAll(".homepage-selector");
+homepageSelects.forEach(select => {
+  select.addEventListener("change", e => {
+    if(select.value != "subtitle")
+      select.parentElement.classList.add("indent")
+    else if (select.parentElement.classList.contains("indent"))
+      select.parentElement.classList.remove("indent");
+  })
+})
+
+// Add new homepage element
+let homepageAdd = document.querySelector(`#homepage-add`);
+
+homepageAdd.addEventListener(`click`, e => {
+  e.preventDefault();
+  
+  // Create Elements
+  let fieldset = document.createElement(`fieldset`);
+  let select = document.createElement(`select`);
+  let optionTitle = document.createElement(`option`);
+  let optionSubtitle = document.createElement(`option`);
+  let optionHeading = document.createElement(`option`);
+  let optionInlineSubheading = document.createElement(`option`);
+  let optionParagraphHeading = document.createElement(`option`);
+  let optionParagraph = document.createElement(`option`);
+  let optionListItem = document.createElement(`option`);
+  let optionGoogleIcon = document.createElement(`option`);
+  let optionUrlIcon = document.createElement(`option`);
+  let textarea = document.createElement(`textarea`);
+  let buttonContainer = document.createElement(`div`);
+  let upButton = document.createElement(`button`);
+  let upButtonSpan = document.createElement(`button`);
+  let deleteButton = document.createElement(`button`);
+  let deleteButtonSpan = document.createElement(`button`);
+  let downButton = document.createElement(`button`);
+  let downButtonSpan = document.createElement(`button`);
+  
+  // Attribute Elements
+  fieldset.classList.add("homepage-fieldset");
+
+  select.setAttribute("name", "type[]");
+  select.classList.add("type-select", "subheading");
+
+  optionTitle.setAttribute("value", "title");
+  optionTitle.textContent = "Title";
+
+  optionSubtitle.setAttribute("value", "subtitle");
+  optionSubtitle.textContent = "Subtitle";
+  optionSubtitle.setAttribute("selected", true);
+
+  optionHeading.setAttribute("value", "heading");
+  optionHeading.textContent = "Heading";
+
+  optionInlineSubheading.setAttribute("value", "inline-subheading");
+  optionInlineSubheading.textContent = "Inline Subheading";
+
+  optionParagraphHeading.setAttribute("value", "paragraph-headinig");
+  optionParagraphHeading.textContent = "Paragraph Heading";
+
+  optionParagraph.setAttribute("value", "paragraph");
+  optionParagraph.textContent = "Paragraph";
+
+  optionListItem.setAttribute("value", "list-item");
+  optionListItem.textContent = "List Item";
+
+  optionGoogleIcon.setAttribute("value", "icon-google");
+  optionGoogleIcon.textContent = "Google Icon";
+
+  optionUrlIcon.setAttribute("value", "icon-url");
+  optionUrlIcon.textContent = "Icon URL";
+
+  textarea.setAttribute("name", "content[]");
+  textarea.classList.add("paragraph", "homepage-textarea", "auto-resize");
+  textarea.textContent = "Content";
+
+  buttonContainer.classList.add("homepage-button-container");
+
+  upButton.classList.add("homepage-button");
+  upButton.id = "up";
+
+  upButtonSpan.classList.add("material-symbols-outlined");
+  upButtonSpan.textContent = "arrow_upward";
+
+  deleteButton.classList.add("homepage-button");
+  deleteButton.id = "delete";
+
+  deleteButtonSpan.classList.add("material-symbols-outlined");
+  deleteButtonSpan.textContent = "delete";
+
+  downButton.classList.add("homepage-button");
+  downButton.id = "down";
+
+  downButtonSpan.classList.add("material-symbols-outlined");
+  downButtonSpan.textContent = "arrow_downward";
+
+  // Append Children
+  upButton.appendChild(upButtonSpan);
+  deleteButton.appendChild(deleteButtonSpan);
+  downButton.appendChild(downButtonSpan);
+
+  buttonContainer.appendChild(upButton);
+  buttonContainer.appendChild(deleteButton);
+  buttonContainer.appendChild(downButton);
+
+  buttonContainer.childNodes.forEach(btn => {
+    btn.addEventListener(`click`, e => {
+      e.preventDefault();
+      let fieldset = (btn.parentElement.parentElement);
+  
+      switch(btn.id) {
+        case "up":
+          if(fieldset.previousElementSibling)
+            fieldset.parentElement.insertBefore(fieldset, fieldset.previousElementSibling);
+          break;
+        case "delete":
+          fieldset.remove();
+          break;
+        case "down":
+          if(fieldset.nextElementSibling)
+            fieldset.parentElement.insertBefore(fieldset.nextElementSibling, fieldset);
+          break;
+      }
+    })
+  })
+
+  select.appendChild(optionTitle);
+  select.appendChild(optionSubtitle);
+  select.appendChild(optionHeading);
+  select.appendChild(optionInlineSubheading);
+  select.appendChild(optionParagraphHeading);
+  select.appendChild(optionParagraph);
+  select.appendChild(optionListItem);
+  select.appendChild(optionGoogleIcon);
+  select.appendChild(optionUrlIcon);
+
+  select.addEventListener("change", e => {
+    if(select.value != "subtitle")
+      fieldset.classList.add("indent")
+    else if (fieldset.classList.contains("indent"))
+      fieldset.classList.remove("indent");
+  })
+
+  fieldset.appendChild(select);
+  fieldset.appendChild(textarea);
+  fieldset.appendChild(buttonContainer);
+
+  // Append to form
+  homepageAdd.parentElement.insertBefore(fieldset, homepageAdd);
+
+})

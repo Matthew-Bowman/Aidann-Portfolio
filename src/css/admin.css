@@ -25,6 +25,7 @@ header {
     align-self: flex-start;
     user-select: none;
     overflow: hidden;
+    min-width: fit-content;
 }
 
 .panel ul {
@@ -135,10 +136,13 @@ header {
     color: #52b5ef;
 }
 
-.works-submit {
+.form-submit-button {
     width: 100%;
     margin: 32px 0;
     padding: 8px 0;
+    background-color: #1c1c1c;
+    color: white;
+    border: 1px solid white;
 }
 
 .thumbnail {
@@ -170,4 +174,45 @@ header {
 
 .delete-button:hover {
     cursor: pointer;
+}
+
+.homepage-fieldset {
+    margin-bottom: 12px;
+    padding: 8px;
+    display: flex;
+    gap: 16px;
+}
+
+.indent {
+    margin-left: 16px;
+}
+
+.type-select {
+    align-self: flex-start;
+    background-color: #1c1c1c;
+    color: white;
+    padding: 4px;
+}
+
+.homepage-textarea {
+    background-color: #1c1c1c;
+    color: white;
+    resize: none;
+}
+
+.homepage-button-container {
+    display: flex;
+    gap: 8px;
+    height: fit-content;
+}
+
+.homepage-button-container button {
+    aspect-ratio: 1;
+    transition: 100ms linear;
+}
+
+.homepage-button-container button:hover {
+    cursor: pointer;
+    background-color: white;
+    color: black;
 }
