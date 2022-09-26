@@ -41,6 +41,10 @@ nav {
     margin-left: 32px;
 }
 
+.nav-items li:last-of-type img {
+    width: 32px;
+}
+
 .nav-items a {
     text-decoration: none;
     color: #ebebeb;
