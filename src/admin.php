@@ -124,7 +124,7 @@
                                 echo        "<option value='icon-google'"; if($type=="icon-google") echo "selected"; echo ">Google Icon</option>";
                                 echo        "<option value='icon-url'"; if($type=="icon-url") echo "selected"; echo ">Icon URL</option>";
                                 echo    "</select>";
-                                echo    "<textarea name='content[]' class='paragraph homepage-textarea auto-resize'>".$content."</textarea>";
+                                echo    "<textarea name='content[]' class='paragraph homepage-textarea auto-resize' maxlength='255'>".$content."</textarea>";
                                 echo    "<div class='homepage-button-container'>";
                                 echo        "<button class='homepage-button' id='up'><span class='material-symbols-outlined'>arrow_upward</span></button>";
                                 echo        "<button class='homepage-button' id='delete'><span class='material-symbols-outlined'>delete</span></button>";
