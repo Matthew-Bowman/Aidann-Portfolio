@@ -20,7 +20,10 @@ header img {
 /* Section Styles */
 
 body>section {
+    margin-bottom: 180px;
     margin-left: 64px;
+    margin-right: 64px;
+    max-width: 750px;
     height: fit-content;
     opacity: 100%;
     transition: linear 0.25s opacity;
@@ -28,10 +31,6 @@ body>section {
 
 body>section:not(.selected) {
     opacity: 20%;
-}
-
-body>section {
-    margin-bottom: 180px;
 }
 
 /* body>section>article {
