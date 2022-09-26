@@ -74,9 +74,9 @@
                 <li class="panel-option" id="selecetor-webstatus"><img src="./images/Icons/Pencil.png" width="32" />Edit Status</li>
                 <li class="panel-subtitle subheading bold"><span></span>Account</li>
                 <li class="panel-option" id="selecetor-pass"><img src="./images/Icons/CircleLock.png" width="32" />Reset Pass</li>
-                <li class="panel-option" id="selecetor-auth">
+                <!-- <li class="panel-option" id="selecetor-auth">
                     <div><img src="./images/Icons/Lock.png" width="24" /></div>2-Step Auth
-                </li>
+                </li> -->
             </ul>
         </article>
 
