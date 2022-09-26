@@ -4,12 +4,13 @@
         $servername = getenv("db_host");
         $username = getenv("db_user");
         $dbname = getenv("db_name");
+        $dbpass = getenv("db_pass");
         
         $usr = $_POST["username"];
         $pwd = $_POST["password"];
 
         // Create connection
-        $conn = new mysqli($servername, $username, "", $dbname);
+        $conn = new mysqli($servername, $username, $dbpass, $dbname);
 
         // Check connection
         if ($conn->connect_error) {
