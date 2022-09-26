@@ -24,10 +24,27 @@ header {
     border-radius: 16px;
 }
 
+.reviews-card>img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 540 / 375;
+}
+
 .card-footer {
     padding: 16px;
 }
 
 .blue {
     color: #52b5ef;
+}
+
+@media screen and (max-width: 700px) {
+    /* .reviews-card {
+        width: 360px;
+    }
+
+    .reviews-card>img {
+        height: 250px;
+        object-fit:contain;
+    } */
 }

@@ -66,7 +66,7 @@
                 // output data of each row
                 while($row = $result->fetch_assoc()) {
                     echo "<article class='reviews-card' id='".$row["review_id"]."'>";
-                    echo     "<img src='".$row["thumbnail"]."' width='540px' height='375px'>";
+                    echo     "<img src='".$row["thumbnail"]."'>";
                     echo     "<div class='card-footer'>";
                     echo         "<h3 class='subheading blue'>".$row["rating"]."</h3>";
                     echo         "<h2 class='heading'>".$row["name"]."</h2>";
