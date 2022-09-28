@@ -54,6 +54,7 @@ placeholders.forEach(placeholder => {
     let typeInput = document.createElement(`input`);
     let nameInput = document.createElement(`input`);
     let descriptionInput = document.createElement(`textarea`);
+    let imagesInput = document.createElement("textarea");
   
     // Give Attributes to Elements
     fieldset.classList.add("option-card");
@@ -93,6 +94,11 @@ placeholders.forEach(placeholder => {
     descriptionInput.textContent = "Description";
     descriptionInput.setAttribute("maxlength", "255");
 
+    imagesInput.classList.add("paragraph", "auto-resize");
+    imagesInput.setAttribute("name", "images[]");
+    imagesInput.placeholder = "Images";
+    imagesInput.setAttribute("maxlength", "255");
+
     // Add Event Listeners
     thumbnailInput.addEventListener("change", e => {
       thumbnailInput.parentElement.parentElement.querySelector("img").src = thumbnailInput.value;
@@ -103,12 +109,18 @@ placeholders.forEach(placeholder => {
       descriptionInput.style.height = descriptionInput.scrollHeight + "px";
     })
 
+    imagesInput.addEventListener("input", () => {
+      imagesInput.style.height = 0;
+      imagesInput.style.height = descriptionInput.scrollHeight + "px";
+    })
+
     // Append Elements
     cardFooter.appendChild(idInput);
     cardFooter.appendChild(thumbnailInput);
     cardFooter.appendChild(typeInput);
     cardFooter.appendChild(nameInput);
     cardFooter.appendChild(descriptionInput);
+    cardFooter.appendChild(imagesInput);
     
     fieldset.appendChild(thumbnail);
     fieldset.appendChild(cardFooter);

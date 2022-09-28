@@ -160,6 +160,7 @@
                                 echo         "<input name='type[]' class='subheading blue' value='".$row["type"]."' maxlength='255' />";
                                 echo         "<input name='name[]' class='heading' value='".$row["name"]."' maxlength='255' />";
                                 echo         "<textarea name='description[]' class='paragraph auto-resize' maxlength='255'>".$row["description"]."</textarea>";
+                                echo         "<textarea name='images[]' class='paragraph auto-resize' max-length='255'>".$row["images"]."</textarea>";
                                 echo         "<button class='subheading delete-button' id='delete-work' data-id='".$row["work_id"]."'>Delete</button>";
                                 echo     "</div>";
                                 echo "</fieldset>";

@@ -48,21 +48,24 @@
             for($index = 0; $index < count($_POST["thumbnail"]); $index++) {
                 $sortedPostData[$index]["thumbnail"] = $_POST["thumbnail"][$index];
             }
+            for($index = 0; $index < count($_POST["images"]); $index++) {
+                $sortedPostData[$index]["images"] = $_POST["images"][$index];
+            }
 
             // Testing KVP Assignment
             foreach($sortedPostData as $work) {
                 if ($work["id"] != "NULL") {
                     // Update data
-                    $stmt = $conn->prepare("UPDATE reviews SET rating=?, name=?, description=?, thumbnail=? WHERE review_id = ?;");
-                    $stmt->bind_param("ssssi", $work["rating"], $work["name"], $work["description"], $work["thumbnail"], $work["id"]);
+                    $stmt = $conn->prepare("UPDATE reviews SET rating=?, name=?, description=?, thumbnail=?, images=? WHERE review_id = ?;");
+                    $stmt->bind_param("sssssi", $work["rating"], $work["name"], $work["description"], $work["thumbnail"], $work["images"], $work["id"]);
                     $stmt->execute();
                     
                     // Redirect back
                     header("Location: ./admin.php");
                 } else {
                     // Insert Data
-                    $stmt = $conn->prepare("INSERT INTO reviews (rating, name, description, thumbnail) VALUES (?, ?, ?, ?)");
-                    $stmt->bind_param("ssss", $work["rating"], $work["name"], $work["description"], $work["thumbnail"]);
+                    $stmt = $conn->prepare("INSERT INTO reviews (rating, name, description, thumbnail, images) VALUES (?, ?, ?, ?, ?)");
+                    $stmt->bind_param("sssss", $work["rating"], $work["name"], $work["description"], $work["thumbnail"], $work["images"]);
                     $stmt->execute();
                     
                     // Redirect back
