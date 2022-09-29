@@ -17,6 +17,13 @@
     <link rel="stylesheet" type="text/css" href="./css/global.css">
     <!-- Imported Page Specific Styles -->
     <link rel="stylesheet" type="text/css" href="./css/works.css">
+
+    <!-- Import JavaScript -->
+    <script src="./js/cards.js" defer></script>
+    
+    <!-- Import Google Font Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,700,1,0" rel="stylesheet">
+
 </head>
 
 <body>
@@ -67,11 +74,20 @@
                 // output data of each row
                 while($row = $result->fetch_assoc()) {
                     echo "<article class='project-card' id='".$row["work_id"]."'>";
-                    echo     "<img src='".$row["thumbnail"]."'>";
+                    echo     "<img class='thumbnail' src='".$row["thumbnail"]."'>";
                     echo     "<div class='card-footer'>";
                     echo         "<h3 class='subheading blue'>".$row["type"]."</h3>";
                     echo         "<h2 class='heading'>".$row["name"]."</h2>";
                     echo         "<p class='paragraph'>".$row["description"]."</p>";
+                    echo         "<div class='carousel-container hidden'>";
+                    echo         "<span class='material-symbols-outlined move-left' style='font-size: 64px'>arrow_left</span>";
+                    echo             "<img class='carousel-item' src='".$row["thumbnail"]."' />";
+                    $splitImages = explode(",", $row["images"]);
+                    for($index = 0; $index < count($splitImages); $index++) {
+                        echo         "<img class='carousel-item hidden' src='".$splitImages[$index]."' />";
+                    }
+                    echo             "<span class='material-symbols-outlined move-right' style='font-size: 64px'>arrow_right</span>";
+                    echo         "</div>";
                     echo     "</div>";
                     echo "</article>";
                 }
@@ -82,6 +98,8 @@
             $conn->close();
         ?>
     </section>
+
+    
 
     <footer>
         <h2>Aidann &#174; 2022</h2>

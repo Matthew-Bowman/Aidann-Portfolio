@@ -37,3 +37,38 @@ header {
 .blue {
     color: #52b5ef;
 }
+
+.carousel-container {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.5);
+
+    top:0;
+    left:0;
+    z-index: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+
+.carousel-container {
+    user-select: none;
+}
+
+.hidden {
+    display: none;
+}
+
+.move-left, .move-right {
+    display: block;
+    width: 50px;
+    height: 50px;
+    /* background-color: white; */
+}
+
+.move-left:hover, .move-right:hover {
+    cursor: pointer;
+}
