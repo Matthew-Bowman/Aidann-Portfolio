@@ -20,7 +20,7 @@ document.addEventListener(`click`, e => {
         let item = !e.target.classList.contains("carousel-item");
         if((thumbnail && moveLeft && moveRight && item) && active == true) {
             container.classList.add("hidden");
-            console.log((thumbnail && moveLeft && moveRight && item && itemContainer));
+            document.body.style.overflow = "scroll";
         }
     })
 })
