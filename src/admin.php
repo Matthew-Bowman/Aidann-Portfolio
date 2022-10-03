@@ -221,7 +221,45 @@
                 </form>
             </section>
             <section id="option-status">
-                <h1>Status</h1>
+            <h1 class="heading">Status</h1>
+                <form action="./updateStatus.php" method="post">
+                    <?php 
+                    
+                        $sql = "SELECT * FROM status ORDER BY position";
+                        $result = $conn->query($sql);
+
+                        if($result->num_rows > 0) {
+                            while($row = $result->fetch_assoc()) {
+                                $type = $row["type"];
+                                $content = $row["content"];
+                                
+                                echo "<fieldset class='homepage-fieldset "; if($type!="subtitle") echo "indent"; echo "'>";
+                                echo    "<select name='type[]' class='type-select subheading homepage-selector'>";
+                                echo        "<option value='title'"; if($type=="title") echo "selected"; echo ">Title</option>";
+                                echo        "<option value='subtitle'"; if($type=="subtitle") echo "selected"; echo ">Subtitle</option>";
+                                echo        "<option value='heading'"; if($type=="heading") echo "selected"; echo ">Heading</option>";
+                                echo        "<option value='inline-subheading'"; if($type=="inline-subheading") echo "selected"; echo ">Inline Subheading</option>";
+                                echo        "<option value='paragraph-headinng'"; if($type=="paragraph-heading") echo "selected"; echo ">Paragraph Heading</option>";
+                                echo        "<option value='paragraph'"; if($type=="paragraph") echo "selected"; echo ">Paragraph</option>";
+                                echo        "<option value='list-item'"; if($type=="list-item") echo "selected"; echo ">List Item</option>";
+                                echo        "<option value='icon-google'"; if($type=="icon-google") echo "selected"; echo ">Google Icon</option>";
+                                echo        "<option value='icon-url'"; if($type=="icon-url") echo "selected"; echo ">Icon URL</option>";
+                                echo    "</select>";
+                                echo    "<textarea name='content[]' class='paragraph homepage-textarea auto-resize' maxlength='255'>".$content."</textarea>";
+                                echo    "<div class='homepage-button-container'>";
+                                echo        "<button class='homepage-button' id='up'><span class='material-symbols-outlined'>arrow_upward</span></button>";
+                                echo        "<button class='homepage-button' id='delete'><span class='material-symbols-outlined'>delete</span></button>";
+                                echo        "<button class='homepage-button' id='down'><span class='material-symbols-outlined'>arrow_downward</span></button>";
+                                echo    "</div>";
+                                echo "</fieldset>";
+                            }
+                        }
+                    
+                    ?>
+
+                    <button class="form-submit-button subheading" id="homepage-add">Add new</button>
+                    <input Type="submit" name="submit" class="form-submit-button heading" />
+                </form>
             </section>
             <section id="option-webstatus">
             <h1>Website Status</h1>
