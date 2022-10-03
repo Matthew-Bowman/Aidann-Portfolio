@@ -43,7 +43,7 @@
                 <li><a href="./index.php" class="paragraph">Home</a></li>
                 <li><a href="./works.php" class="paragraph">Works</a></li>
                 <li><a href="./reviews.php" class="paragraph">Reviews</a></li>
-                <li><a href="#" class="paragraph">Status</a></li>
+                <li><a href="./status.php" class="paragraph">Status</a></li>
                 <li><a href="./login.html" class="active"><img src="./images/Icons/Profile.png" /></a></li>
             </ul>
         </section>
