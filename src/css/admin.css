@@ -139,7 +139,7 @@ header {
 .form-submit-button {
     width: 100%;
     margin: 32px 0;
-    padding: 8px 0;
+    padding: 8px 8px;
     background-color: #1c1c1c;
     color: white;
     border: 1px solid white;
@@ -215,4 +215,15 @@ header {
     cursor: pointer;
     background-color: white;
     color: black;
+}
+
+.navigation-heading {
+    margin-bottom: 8px;
+}
+
+.navigation-input {
+    background-color: #1c1c1c;
+    color: white;
+    border: 1px solid white;
+    padding: 4px;
 }

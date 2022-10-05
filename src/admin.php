@@ -4,6 +4,8 @@
         header("Location: ./login.html");
         die();
     }
+
+    $page = "./admin.php";
 ?>
 
 <!DOCTYPE html>
@@ -31,20 +33,73 @@
 
     <!-- Import Google Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,700,1,200" />
+
+
+    <!-- Connect to database -->
+    <?php
+    // Connect to database
+    // Assign Variables
+    $servername = getenv("db_host");
+    $username = getenv("db_user");
+    $dbname = getenv("db_name");
+    $dbpass = getenv("db_pass");
+    
+    // Create connection
+    $conn = new mysqli($servername, $username, $dbpass, $dbname);
+
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+    ?>
 </head>
 
 <body>
-    <nav>
+<nav>
         <section class="nav-brand">
             <a href="./index.php"><img src="./images/Logo.png" /></a>
         </section>
         <section class="nav-items">
             <ul>
-                <li><a href="./index.php" class="paragraph">Home</a></li>
-                <li><a href="./works.php" class="paragraph">Works</a></li>
-                <li><a href="./reviews.php" class="paragraph">Reviews</a></li>
-                <li><a href="./status.php" class="paragraph">Status</a></li>
-                <li><a href="./login.html" class="active"><img src="./images/Icons/Profile.png" /></a></li>
+                <?php 
+
+                    // Perform Query
+                    $sql = "SELECT * FROM navbar;";
+                    $result = $conn->query($sql);
+                    
+                    if ($result->num_rows > 0) {   
+                        // output data of each row
+                        while($row = $result->fetch_assoc()) {
+                            echo    "<li>";
+                            // Write anchor
+                            if($row['destination'] != "PROFILE")
+                                echo    "<a href='".$row['destination']."'";
+                            else {
+                                // Check Session
+                                if(!isset($_SESSION["username"]))
+                                    echo"<a href='./login.php'";
+                                else 
+                                    echo"<a href='./admin.php'";
+                            }
+
+                            // Set Anchor Class & CLOSE ANCHOR OPENING TAG
+                            if($row['destination'] == $page)
+                                echo        " class='paragraph active'>";
+                            else
+                                echo        " class='paragraph'>";
+                            
+                            // Write Content
+                            if($row['type'] == 'text')
+                                echo            $row['content'];
+                            elseif($row['type'] == 'icon')
+                                echo            "<span class='material-symbols-outlined'>".$row['content']."</span>";
+
+                            // Close Tags
+                            echo        "</a>";
+                            echo    "</li>";
+                        }
+                    }
+                ?>
             </ul>
         </section>
     </nav>
@@ -66,12 +121,12 @@
         <article class="panel">
             <ul class="subheading medium">
                 <li class="panel-subtitle subheading bold"><span></span>Edit</li>
-                <li class="panel-option active" id="selecetor-home"><img src="./images/Icons/Pencil.png" width="32" />Edit Home</li>
-                <li class="panel-option" id="selecetor-works"><img src="./images/Icons/Pencil.png" width="32" />Edit Works</li>
-                <li class="panel-option" id="selecetor-reviews"><img src="./images/Icons/Pencil.png" width="32" />Edit Reviews</li>
-                <li class="panel-option" id="selecetor-status"><img src="./images/Icons/Pencil.png" width="32" />Edit Status</li>
+                <li class="panel-option active" id="selecetor-home"><img src="./images/Icons/Pencil.png" width="32" />Home</li>
+                <li class="panel-option" id="selecetor-works"><img src="./images/Icons/Pencil.png" width="32" />Works</li>
+                <li class="panel-option" id="selecetor-reviews"><img src="./images/Icons/Pencil.png" width="32" />Reviews</li>
+                <li class="panel-option" id="selecetor-status"><img src="./images/Icons/Pencil.png" width="32" />Status</li>
                 <li class="panel-subtitle subheading bold"><span></span>Website</li>
-                <li class="panel-option" id="selecetor-webstatus"><img src="./images/Icons/Pencil.png" width="32" />Edit Status</li>
+                <li class="panel-option" id="selecetor-webstatus"><img src="./images/Icons/Pencil.png" width="32" />Navigation</li>
                 <li class="panel-subtitle subheading bold"><span></span>Account</li>
                 <li class="panel-option" id="selecetor-pass"><img src="./images/Icons/CircleLock.png" width="32" />Reset Pass</li>
                 <!-- <li class="panel-option" id="selecetor-auth">
@@ -79,25 +134,6 @@
                 </li> -->
             </ul>
         </article>
-
-        <!-- Connect to Database -->
-        <?php 
-        
-            // Assign Variables
-            $servername = getenv("db_host");
-            $username = getenv("db_user");
-            $dbname = getenv("db_name");
-            $dbpass = getenv("db_pass");
-            
-            // Create connection
-            $conn = new mysqli($servername, $username, $dbpass, $dbname);
-
-            // Check connection
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
-        
-        ?>
 
         <article class="content">
             <section id="option-home">
@@ -221,7 +257,7 @@
                 </form>
             </section>
             <section id="option-status">
-            <h1 class="heading">Status</h1>
+                <h1 class="heading">Status</h1>
                 <form action="./updateStatus.php" method="post">
                     <?php 
                     
@@ -262,7 +298,29 @@
                 </form>
             </section>
             <section id="option-webstatus">
-            <h1>Website Status</h1>
+                <h1 class='heading navigation-heading'>Navigation</h1>
+                <form action="./updateNavigation.php" method="post">
+                    <?php
+                    
+                    $sql = "SELECT * FROM navbar";
+                    $result = $conn->query($sql);
+
+                    if($result->num_rows > 0) {
+                        while($row = $result->fetch_assoc()) {
+                            echo  "<fieldset class='homepage-fieldset'>";
+                            echo    "<select name='type[]' class='type-select paragraph'>";
+                            echo      "<option value='text'"; if($row['type']=="text") echo "selected"; echo ">Text</option>";
+                            echo      "<option value='icon'"; if($row['type']=="icon") echo "selected"; echo ">Icon</option>";
+                            echo    "</select>";
+                            echo    "<input name='content[]' type='text' value='".$row['content']."' class='navigation-input paragraph' maxlength='255' />";
+                            echo    "<input name='destination[]' type='text' value='".$row['destination']."' class='navigation-input paragraph' maxlength='255' />";
+                            echo  "</fieldset>";
+                        }
+                    }
+
+                    ?>
+                    <input type="submit" name="submit" class="form-submit-button subheading" />
+                </form> 
             </section>
             <section id="option-pass">
                 <h1>Password</h1>

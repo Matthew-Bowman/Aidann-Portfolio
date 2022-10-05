@@ -1,3 +1,8 @@
+<?php 
+    // Start Session
+    session_start();
+    $page = "./index.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,6 +27,24 @@
 
     <!-- Import JavaScript -->
     <script src="./js/main.js" type="text/javascript" defer></script>
+
+    <!-- Connect to database -->
+    <?php
+    // Connect to database
+    // Assign Variables
+    $servername = getenv("db_host");
+    $username = getenv("db_user");
+    $dbname = getenv("db_name");
+    $dbpass = getenv("db_pass");
+    
+    // Create connection
+    $conn = new mysqli($servername, $username, $dbpass, $dbname);
+
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+    ?>
 </head>
 <body>
     <nav>
@@ -30,11 +53,45 @@
         </section>
         <section class="nav-items">
             <ul>
-                <li><a href="./index.php" class="paragraph active">Home</a></li>
-                <li><a href="./works.php" class="paragraph">Works</a></li>
-                <li><a href="./reviews.php" class="paragraph">Reviews</a></li>
-                <li><a href="./status.php" class="paragraph">Status</a></li>
-                <li><a href="./login.html"><img src="./images/Icons/Profile.png"/></a></li>
+                <?php 
+
+                    // Perform Query
+                    $sql = "SELECT * FROM navbar;";
+                    $result = $conn->query($sql);
+                    
+                    if ($result->num_rows > 0) {   
+                        // output data of each row
+                        while($row = $result->fetch_assoc()) {
+                            echo    "<li>";
+                            // Write anchor
+                            if($row['destination'] != "PROFILE")
+                                echo    "<a href='".$row['destination']."'";
+                            else {
+                                // Check Session
+                                if(!isset($_SESSION["username"]))
+                                    echo"<a href='./login.php'";
+                                else 
+                                    echo"<a href='./admin.php'";
+                            }
+
+                            // Set Anchor Class & CLOSE ANCHOR OPENING TAG
+                            if($row['destination'] == $page)
+                                echo        " class='paragraph active'>";
+                            else
+                                echo        " class='paragraph'>";
+                            
+                            // Write Content
+                            if($row['type'] == 'text')
+                                echo            $row['content'];
+                            elseif($row['type'] == 'icon')
+                                echo            "<span class='material-symbols-outlined'>".$row['content']."</span>";
+
+                            // Close Tags
+                            echo        "</a>";
+                            echo    "</li>";
+                        }
+                    }
+                ?>
             </ul>
         </section>
     </nav>
@@ -52,21 +109,6 @@
     </header>
 
     <?php
-    
-    // Connect to database
-    // Assign Variables
-    $servername = getenv("db_host");
-    $username = getenv("db_user");
-    $dbname = getenv("db_name");
-    $dbpass = getenv("db_pass");
-    
-    // Create connection
-    $conn = new mysqli($servername, $username, $dbpass, $dbname);
-
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
 
     $sql = "SELECT * FROM homepage ORDER BY position ASC;";
     $result = $conn->query($sql);

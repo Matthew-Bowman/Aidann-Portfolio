@@ -20,7 +20,7 @@ document.addEventListener(`click`, e => {
         let item = !e.target.classList.contains("carousel-item");
         if((thumbnail && moveLeft && moveRight && item) && active == true) {
             container.classList.add("hidden");
-            document.body.style.overflow = "scroll";
+            document.body.style.overflow = "auto";
         }
     })
 })
@@ -40,6 +40,10 @@ moveLeft.forEach(btn => {
 moveRight.forEach(btn => {
     btn.addEventListener(`click`, e => {
         const images = btn.parentElement.querySelectorAll(`img`);
+
+        console.log(images);
+        console.log(images.length);
+        console.log(position);
 
         if(position < images.length-1)
             position++;
