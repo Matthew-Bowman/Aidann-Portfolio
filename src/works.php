@@ -24,7 +24,7 @@
     <link rel="stylesheet" type="text/css" href="./css/works.css">
 
     <!-- Import JavaScript -->
-    <script src="./js/cards.js" defer></script>
+    <!-- <script src="./js/cards.js" defer></script> -->
     
     <!-- Import Google Font Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,700,1,0" rel="stylesheet">
