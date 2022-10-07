@@ -1,6 +1,10 @@
 <?php 
     // Start Session
     session_start();
+
+    // Include DBFunctions
+    require_once 'includes/dbfunctions.inc.php';
+
     $page = "./reviews.php";
 ?>
 <!DOCTYPE html>
@@ -25,24 +29,6 @@
 
     <!-- Import Google Font Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,700,1,0" rel="stylesheet">
-
-    <!-- Connect to database -->
-    <?php
-    // Connect to database
-    // Assign Variables
-    $servername = getenv("db_host");
-    $username = getenv("db_user");
-    $dbname = getenv("db_name");
-    $dbpass = getenv("db_pass");
-    
-    // Create connection
-    $conn = new mysqli($servername, $username, $dbpass, $dbname);
-
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-    ?>
 </head>
 
 <body>
@@ -55,8 +41,7 @@
                 <?php 
 
                     // Perform Query
-                    $sql = "SELECT * FROM navbar;";
-                    $result = $conn->query($sql);
+                    $result = SelectNavbar();
                     
                     if ($result->num_rows > 0) {   
                         // output data of each row
@@ -107,8 +92,7 @@
     <section class="reviews">
         <?php
 
-            $sql = "SELECT * FROM reviews;";
-            $result = $conn->query($sql);
+            $result = SelectReviews();
             
             if ($result->num_rows > 0) {
                 // output data of each row

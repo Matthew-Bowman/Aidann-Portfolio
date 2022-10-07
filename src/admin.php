@@ -5,6 +5,8 @@
         die();
     }
 
+    require_once 'includes/dbfunctions.inc.php';
+
     $page = "./admin.php";
 ?>
 
@@ -33,25 +35,6 @@
 
     <!-- Import Google Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,700,1,200" />
-
-
-    <!-- Connect to database -->
-    <?php
-    // Connect to database
-    // Assign Variables
-    $servername = getenv("db_host");
-    $username = getenv("db_user");
-    $dbname = getenv("db_name");
-    $dbpass = getenv("db_pass");
-    
-    // Create connection
-    $conn = new mysqli($servername, $username, $dbpass, $dbname);
-
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-    ?>
 </head>
 
 <body>
@@ -64,8 +47,7 @@
                 <?php 
 
                     // Perform Query
-                    $sql = "SELECT * FROM navbar;";
-                    $result = $conn->query($sql);
+                    $result = SelectNavbar();
                     
                     if ($result->num_rows > 0) {   
                         // output data of each row
@@ -141,8 +123,7 @@
                 <form action="./updateHomepage.php" method="post">
                     <?php 
                     
-                        $sql = "SELECT * FROM homepage ORDER BY position";
-                        $result = $conn->query($sql);
+                        $result = SelectOrderedHomepage();
 
                         if($result->num_rows > 0) {
                             while($row = $result->fetch_assoc()) {
@@ -182,8 +163,7 @@
                 <form action="./addWorks.php" method="post">
                     <?php
                     
-                        $sql = "SELECT * FROM works;";
-                        $result = $conn->query($sql);
+                        $result = SelectWorks();
                         
                         if ($result->num_rows > 0) {
                             // output data of each row
@@ -222,8 +202,7 @@
                 <form action="./addReview.php" method="post">
                     <?php
                     
-                        $sql = "SELECT * FROM reviews;";
-                        $result = $conn->query($sql);
+                        $result = SelectReviews();
                         
                         if ($result->num_rows > 0) {
                             // output data of each row
@@ -260,9 +239,7 @@
                 <h1 class="heading">Status</h1>
                 <form action="./updateStatus.php" method="post">
                     <?php 
-                    
-                        $sql = "SELECT * FROM status ORDER BY position";
-                        $result = $conn->query($sql);
+                        $result = SelectOrderedStatus();
 
                         if($result->num_rows > 0) {
                             while($row = $result->fetch_assoc()) {
@@ -302,8 +279,7 @@
                 <form action="./updateNavigation.php" method="post">
                     <?php
                     
-                    $sql = "SELECT * FROM navbar";
-                    $result = $conn->query($sql);
+                    $result = SelectNavbar();
 
                     if($result->num_rows > 0) {
                         while($row = $result->fetch_assoc()) {

@@ -1,26 +1,10 @@
 <?php
+    require_once 'includes/dbfunctions.inc.php';
+    $usr = $_POST["username"];
+    $pwd = $_POST["password"];  
+
     if(isset($_POST["submit"])) {
-        // Assign Variables
-        $servername = getenv("db_host");
-        $username = getenv("db_user");
-        $dbname = getenv("db_name");
-        $dbpass = getenv("db_pass");
-        
-        $usr = $_POST["username"];
-        $pwd = $_POST["password"];
-
-        // Create connection
-        $conn = new mysqli($servername, $username, $dbpass, $dbname);
-
-        // Check connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
-
-        $stmt = $conn->prepare("SELECT * FROM users WHERE username = ?;");
-        $stmt->bind_param("s", $usr);
-        $stmt->execute();
-        $result = $stmt->get_result();
+        $result = GetUser($usr);
 
         // Checks if username is in database
         if($result->num_rows > 0){
@@ -37,16 +21,16 @@
                 header("Location: ./admin.php");
                 die();
             } else {
-                header("Location: ./login.html");
+                header("Location: ./login.php");
                 die();
             }
         } else {
-            header("Location: ./login.html");
+            header("Location: ./login.php");
             die();
         }
 
     } else {
-        header("Location: ./login.html");
+        header("Location: ./login.php");
         die();
     }
 ?>

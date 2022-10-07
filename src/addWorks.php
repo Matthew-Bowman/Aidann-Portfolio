@@ -2,6 +2,9 @@
     // Start Session
     session_start();
 
+    // Include DBFunctions
+    require_once 'includes/dbfunctions.inc.php';
+
     // Check Session
     if(!isset($_SESSION["username"]))
     {
@@ -35,20 +38,10 @@
             
             for($index = 0; $index < count($_POST["id"]); $index++) {
                 $sortedPostData[$index]["id"] = $_POST["id"][$index];
-            }
-            for($index = 0; $index < count($_POST["type"]); $index++) {
                 $sortedPostData[$index]["type"] = $_POST["type"][$index];
-            }
-            for($index = 0; $index < count($_POST["name"]); $index++) {
                 $sortedPostData[$index]["name"] = $_POST["name"][$index];
-            }
-            for($index = 0; $index < count($_POST["description"]); $index++) {
                 $sortedPostData[$index]["description"] = $_POST["description"][$index];
-            }
-            for($index = 0; $index < count($_POST["thumbnail"]); $index++) {
                 $sortedPostData[$index]["thumbnail"] = $_POST["thumbnail"][$index];
-            }
-            for($index = 0; $index < count($_POST["images"]); $index++) {
                 $sortedPostData[$index]["images"] = $_POST["images"][$index];
             }
 
@@ -56,22 +49,14 @@
             foreach($sortedPostData as $work) {
                 if ($work["id"] != "NULL") {
                     // Update data
-                    $stmt = $conn->prepare("UPDATE works SET type=?, name=?, description=?, thumbnail=?, images=? WHERE work_id = ?;");
-                    $stmt->bind_param("sssssi", $work["type"], $work["name"], $work["description"], $work["thumbnail"], $work["images"], $work["id"]);
-                    $stmt->execute();
-                    
-                    // Redirect back
-                    header("Location: ./admin.php");
+                    UpdateWork($work);
                 } else {
                     // Insert Data
-                    $stmt = $conn->prepare("INSERT INTO works (type, name, description, thumbnail, images) VALUES (?, ?, ?, ?, ?)");
-                    $stmt->bind_param("sssss", $work["type"], $work["name"], $work["description"], $work["thumbnail"], $work["images"]);
-                    $stmt->execute();
-                    
-                    // Redirect back
-                    header("Location: ./admin.php");
+                    InsertWork($work);
                 }
             }
+            // Redirect back
+            header("Location: ./admin.php");
         }
     }
 

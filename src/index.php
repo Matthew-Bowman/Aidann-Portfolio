@@ -1,6 +1,10 @@
 <?php 
     // Start Session
     session_start();
+
+    // Include DBFunctions
+    require_once 'includes/dbfunctions.inc.php';
+
     $page = "./index.php";
 ?>
 <!DOCTYPE html>
@@ -27,24 +31,6 @@
 
     <!-- Import JavaScript -->
     <script src="./js/main.js" type="text/javascript" defer></script>
-
-    <!-- Connect to database -->
-    <?php
-    // Connect to database
-    // Assign Variables
-    $servername = getenv("db_host");
-    $username = getenv("db_user");
-    $dbname = getenv("db_name");
-    $dbpass = getenv("db_pass");
-    
-    // Create connection
-    $conn = new mysqli($servername, $username, $dbpass, $dbname);
-
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-    ?>
 </head>
 <body>
     <nav>
@@ -56,8 +42,7 @@
                 <?php 
 
                     // Perform Query
-                    $sql = "SELECT * FROM navbar;";
-                    $result = $conn->query($sql);
+                    $result = SelectNavbar();
                     
                     if ($result->num_rows > 0) {   
                         // output data of each row
@@ -109,9 +94,7 @@
     </header>
 
     <?php
-
-    $sql = "SELECT * FROM homepage ORDER BY position ASC;";
-    $result = $conn->query($sql);
+    $result = SelectOrderedHomepage();
     
     if ($result->num_rows > 0) {
         // Initialise Variables
