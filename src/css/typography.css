@@ -21,22 +21,22 @@
 
 /* Typography Styles */
 .title {
-    font-family: ECB_Regular;
+    font-family: ECB_SemiBold;
     font-size: 3rem;
 }
 
 .heading {
-    font-family: ECB_Regular;
+    font-family: ECB_SemiBold;
     font-size: 2.25rem;
 }
 
 .subheading {
-    font-family: ECB_Regular;
+    font-family: ECB_SemiBold;
     font-size: 1.75rem;
 }
 
 .paragraph {
-    font-family: ECB_Regular;
+    font-family: ECB_SemiBold;
     font-size: 1.25rem;
 }
 
