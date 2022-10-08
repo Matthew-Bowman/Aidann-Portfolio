@@ -8,6 +8,21 @@ body {
     background-color: #131313;
     font-family: ECB_Light;
     color: #ffffff;
+
+    opacity: 0;
+    animation: FadeInAnimation 1s ease;
+    animation-iteration-count: 1;
+    animation-delay: 250ms;
+    animation-fill-mode: forwards;
+}
+
+@keyframes FadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 .section-title {
