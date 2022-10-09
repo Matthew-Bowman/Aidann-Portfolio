@@ -1,58 +1,56 @@
 const cardThumbnails = document.querySelectorAll(`.thumbnail`);
-let position = 0;
-let active = false;
+const carouselViewer = document.querySelector(`.carousel-viewer`);
+const buttonLeft = document.querySelector(`#button-left`);
+const buttonRight = document.querySelector(`#button-right`);
+const img = carouselViewer.querySelector(`img`);
+let viewing = false;
+let position;
 
-cardThumbnails.forEach(thumbnail => {
-    thumbnail.addEventListener("click", () => {
-        thumbnail.parentElement.querySelector(`.carousel-container`).classList.remove("hidden");
+cardThumbnails.forEach(thumbnail => thumbnail.addEventListener(`click`, e => {
+    if(viewing == false) {
+        viewing = true;
+        // RESET and populate pictures array
+        pictures = [];
+        e.target.parentElement.querySelector(`.carousel-container`).querySelectorAll(`.carousel-item`).forEach(element => pictures.push(element.value));
+        
+        // Display Carousel
+        carouselViewer.style.display = "flex";
         document.body.style.overflow = "hidden";
-
+        carouselViewer.querySelector(`img`).src = pictures[0];
+        carouselViewer.style.top = `${window.scrollY}px`
         position = 0;
-        active = true
-    });
-});
+    }
+}));
 
 document.addEventListener(`click`, e => {
-    document.querySelectorAll(`.carousel-container`).forEach(container => {
-        let thumbnail = !e.target.classList.contains("thumbnail");
-        let moveLeft = !e.target.classList.contains("move-left");
-        let moveRight = !e.target.classList.contains("move-right");
-        let item = !e.target.classList.contains("carousel-item");
-        if((thumbnail && moveLeft && moveRight && item) && active == true) {
-            container.classList.add("hidden");
-            document.body.style.overflow = "auto";
-        }
-    })
-})
-
-const moveLeft = document.querySelectorAll(".move-left");
-const moveRight = document.querySelectorAll(".move-right");
-
-moveLeft.forEach(btn => {
-    btn.addEventListener(`click`, e => {
-        if(position > 0)
-            position--
-    
-        UpdateDisplay(btn);
-    });
+    if(viewing && !e.target.classList.contains("carousel-controls") && !e.target.classList.contains("thumbnail")) {
+        carouselViewer.style.display = `none`;
+        document.body.style.overflow = `auto`;
+        viewing = false;
+    }
 });
 
-moveRight.forEach(btn => {
-    btn.addEventListener(`click`, e => {
-        const images = btn.parentElement.querySelectorAll(`img`);
-
-        console.log(images);
-        console.log(images.length);
-        console.log(position);
-
-        if(position < images.length-1)
-            position++;
-
-        UpdateDisplay(btn);
-    })
-})
-
-function UpdateDisplay(btn) {
-    btn.parentElement.querySelectorAll(`img`).forEach(img => img.classList.add("hidden"));
-    btn.parentElement.querySelectorAll(`img`)[position].classList.remove("hidden");
+const moveRight = () => {
+    if(position >= pictures.length - 1) {
+        position = 0;
+        img.src = pictures[position];
+        return;
+    }
+    img.src = pictures[position+1];
+    position++;
+    console.log(pictures);
+    console.log(position);
 }
+
+const moveLeft = () => {
+    if (position < 1) {
+        position = pictures.length -1;
+        img.src = pictures[position];
+        return;
+    }
+    img.src = pictures[position-1];
+    position--;
+}
+
+buttonRight.addEventListener("click", moveRight);
+buttonLeft.addEventListener("click", moveLeft);

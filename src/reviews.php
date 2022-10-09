@@ -27,6 +27,15 @@
     <!-- Imported Page Specific Styles -->
     <link rel="stylesheet" type="text/css" href="./css/reviews.css">
 
+    <!-- Script to Store Carousel Data -->
+    <script type="text/javascript">
+        let pictures = [];
+    </script>
+
+    <!-- Carousel Script -->
+    <script type="text/javascript" src="./js/cards.js" defer>
+    </script>
+
     <!-- Import Google Font Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,700,1,0" rel="stylesheet">
 </head>
@@ -98,11 +107,20 @@
                 // output data of each row
                 while($row = $result->fetch_assoc()) {
                     echo "<article class='reviews-card' id='".$row["review_id"]."'>";
-                    echo     "<img src='".$row["thumbnail"]."'>";
+                    echo     "<img src='".$row["thumbnail"]."' class='thumbnail'>";
                     echo     "<div class='card-footer'>";
                     echo         "<h3 class='subheading blue'>".$row["rating"]."</h3>";
                     echo         "<h2 class='heading'>".$row["name"]."</h2>";
                     echo         "<p class='paragraph'>".$row["description"]."</p>";
+                    echo         "<div class='carousel-container hidden'>";
+                    echo             "<input class='carousel-item' hidden value='".$row["thumbnail"]."' />";
+                    if($row["images"] != "") { 
+                        $splitImages = explode(",", $row["images"]);
+                        for($index = 0; $index < count($splitImages); $index++) {
+                            echo         "<input class='carousel-item' hidden value='".$splitImages[$index]."' />";
+                        }
+                    }
+                    echo         "</div>";
                     echo     "</div>";
                     echo "</article>";
                 }
@@ -112,6 +130,12 @@
             
             $conn->close();
         ?>
+    </section>
+
+    <section class="carousel-viewer">
+        <button id="button-left" class="carousel-controls"><span class="material-symbols-outlined carousel-controls">arrow_back</span></button>
+        <img src="" class="carousel-controls" />
+        <button id="button-right" class="carousel-controls"><span class="material-symbols-outlined carousel-controls">arrow_forward</span></button>
     </section>
 
     <footer>

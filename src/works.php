@@ -27,15 +27,21 @@
     <!-- Imported Page Specific Styles -->
     <link rel="stylesheet" type="text/css" href="./css/works.css">
 
-    <!-- Import JavaScript -->
-    <!-- <script src="./js/cards.js" defer></script> -->
+    <!-- Script to Store Carousel Data -->
+    <script type="text/javascript">
+        let pictures = [];
+    </script>
+
+    <!-- Carousel Script -->
+    <script type="text/javascript" src="./js/cards.js" defer>
+    </script>
     
     <!-- Import Google Font Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,700,1,0" rel="stylesheet">
 </head>
 
 <body>
-<nav>
+    <nav>
         <section class="nav-brand">
             <a href="./index.php"><img src="./images/Logo.png" /></a>
         </section>
@@ -107,13 +113,13 @@
                     echo         "<h2 class='heading'>".$row["name"]."</h2>";
                     echo         "<p class='paragraph'>".$row["description"]."</p>";
                     echo         "<div class='carousel-container hidden'>";
-                    echo         "<span class='material-symbols-outlined move-left' style='font-size: 64px'>arrow_left</span>";
-                    echo             "<img class='carousel-item' src='".$row["thumbnail"]."' />";
-                    $splitImages = explode(",", $row["images"]);
-                    for($index = 0; $index < count($splitImages); $index++) {
-                        echo         "<img class='carousel-item hidden' src='".$splitImages[$index]."' />";
+                    echo             "<input class='carousel-item' hidden value='".$row["thumbnail"]."' />";
+                    if($row["images"] != "") { 
+                        $splitImages = explode(",", $row["images"]);
+                        for($index = 0; $index < count($splitImages); $index++) {
+                            echo         "<input class='carousel-item' hidden value='".$splitImages[$index]."' />";
+                        }
                     }
-                    echo             "<span class='material-symbols-outlined move-right' style='font-size: 64px'>arrow_right</span>";
                     echo         "</div>";
                     echo     "</div>";
                     echo "</article>";
@@ -126,7 +132,11 @@
         ?>
     </section>
 
-    
+    <section class="carousel-viewer">
+        <button id="button-left" class="carousel-controls"><span class="material-symbols-outlined carousel-controls">arrow_back</span></button>
+        <img src="" class="carousel-controls" />
+        <button id="button-right" class="carousel-controls"><span class="material-symbols-outlined carousel-controls">arrow_forward</span></button>
+    </section>
 
     <footer>
         <h2>Aidann &#174; 2022</h2>

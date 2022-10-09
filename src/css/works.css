@@ -38,37 +38,37 @@ header {
     color: #52b5ef;
 }
 
-.carousel-container {
-    position: absolute;
+.carousel-viewer {
     width: 100vw;
     height: 100vh;
-    background: rgba(0,0,0,0.5);
-
-    top:0;
-    left:0;
-    z-index: 1;
-
-    display: flex;
-    justify-content: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
     align-items: center;
-    gap: 16px;
-}
-
-.carousel-container {
-    user-select: none;
-}
-
-.hidden {
+    justify-content: center;
     display: none;
+    z-index: 1;
+    background-color: rgba(0,0,0,0.5);
 }
 
-.move-left, .move-right {
-    display: block;
-    width: 50px;
-    height: 50px;
-    /* background-color: white; */
+.carousel-viewer img {
+    max-width: 70vw;
 }
 
-.move-left:hover, .move-right:hover {
-    cursor: pointer;
+.carousel-controls {
+    margin: 8px
+}
+
+.carousel-viewer button {
+    background-color: #1c1c1c;
+    color: white;
+    border: none;
+}
+
+@media screen and (max-width: 420px) {
+    .carousel-viewer {
+        flex-direction: column;
+    }
 }

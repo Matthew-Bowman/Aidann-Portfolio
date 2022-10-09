@@ -38,13 +38,37 @@ header {
     color: #52b5ef;
 }
 
-@media screen and (max-width: 700px) {
-    /* .reviews-card {
-        width: 360px;
-    }
+.carousel-viewer {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    align-items: center;
+    justify-content: center;
+    display: none;
+    z-index: 1;
+    background-color: rgba(0,0,0,0.5);
+}
 
-    .reviews-card>img {
-        height: 250px;
-        object-fit:contain;
-    } */
+.carousel-viewer img{
+    max-width: 70vw;
+}
+
+.carousel-controls {
+    margin: 8px
+}
+
+.carousel-viewer button {
+    background-color: #1c1c1c;
+    color: white;
+    border: none;
+}
+
+@media screen and (max-width: 420px) {
+    .carousel-viewer {
+        flex-direction: column;
+    }
 }
