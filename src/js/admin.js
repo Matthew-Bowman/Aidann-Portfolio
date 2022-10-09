@@ -196,9 +196,9 @@ homepageSelects.forEach(select => {
 })
 
 // Add new homepage element
-let homepageAdd = document.querySelector(`#homepage-add`);
+let homepageAddBtns = document.querySelectorAll(`#homepage-add`);
 
-homepageAdd.addEventListener(`click`, e => {
+homepageAddBtns.forEach(homepageAdd => homepageAdd.addEventListener(`click`, e => {
   e.preventDefault();
   
   // Create Elements
@@ -334,4 +334,4 @@ homepageAdd.addEventListener(`click`, e => {
   // Append to form
   homepageAdd.parentElement.insertBefore(fieldset, homepageAdd);
 
-})
+}));
