@@ -227,3 +227,18 @@ header {
     border: 1px solid white;
     padding: 4px;
 }
+
+.reset-input {
+    display: block;
+    background: #1c1c1c;
+    margin-top: 16px;
+    padding: 12px;
+    color: white;
+    border: none;
+}
+
+.submit-pass {
+    margin-top: 16px;
+    padding: 16px;
+    display: block;
+}

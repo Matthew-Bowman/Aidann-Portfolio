@@ -254,4 +254,17 @@
         // RETURN Result
         return $sql->get_result();
     }
+
+    /**
+     * METHOD: Changes the password of the admin user (aidann)
+     */
+    function ChangePassword($password) {
+        // SET conn Variable to Global
+        global $conn;
+        // PREPARE SQL Statement
+        $sql = $conn->prepare("UPDATE users SET password=? WHERE username='aidann'");
+        $sql->bind_param("s", $password);
+        // EXECUTE Query
+        $sql->execute();
+    }
 ?>

@@ -1,7 +1,7 @@
 <?php 
     session_start();
     if(!isset($_SESSION["username"])) {
-        header("Location: ./login.html");
+        header("Location: ./login.php");
         die();
     }
 
@@ -300,7 +300,11 @@
                 </form> 
             </section>
             <section id="option-pass">
-                <h1>Password</h1>
+                <h1 class="heading">Password</h1>
+                <form action="./changePassword.php" method="post">
+                    <input class="reset-input subheading" name="password" type="password" />
+                    <button class="submit-pass subheading" name="submit">Submit</button>
+                </form>
             </section>
             <section id="option-auth">
                 <h1>2-Factor-Authentication</h1>
