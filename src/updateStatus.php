@@ -18,25 +18,30 @@
             header("Location: ./admin.php");
             die();
         } else {
-            // Parse for data into array of KVP
-            $sortedPostData = array();
-            
-            for($index = 0; $index < count($_POST["type"]); $index++) {
-                $sortedPostData[$index]["type"] = $_POST["type"][$index];
-                $sortedPostData[$index]["position"] = $index;
-                $sortedPostData[$index]["content"] = $_POST["content"][$index];
-            }
+            if($_POST["type"]) {
+                // Parse for data into array of KVP
+                $sortedPostData = array();
+                
+                for($index = 0; $index < count($_POST["type"]); $index++) {
+                    $sortedPostData[$index]["type"] = $_POST["type"][$index];
+                    $sortedPostData[$index]["position"] = $index;
+                    $sortedPostData[$index]["content"] = $_POST["content"][$index];
+                }
 
-            // Reset table
-            DeleteStatus();
+                // Reset table
+                DeleteStatus();
 
-            // Testing KVP Assignment
-            foreach($sortedPostData as $element) {
-                // Update data
-                InsertStatus($element);
+                // Testing KVP Assignment
+                foreach($sortedPostData as $element) {
+                    // Update data
+                    InsertStatus($element);
+                }
+                // Redirect back
+                header("Location: ./admin.php");
+            } else {
+                DeleteStatus();
+                header("Location: ./admin.php");
             }
-            // Redirect back
-            header("Location: ./admin.php");
         }
     }
 
