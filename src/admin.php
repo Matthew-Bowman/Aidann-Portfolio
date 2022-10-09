@@ -19,6 +19,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
 
+    <!-- Favicon -->
+    <?php 
+        echo "<link rel=\"icon\" href=\"".GetFavicon()->fetch_row()[1]."\" />";
+    ?>
+
     <!-- Import Fonts -->
     <link rel="stylesheet" type="text/css" href="./css/ECB.css">
     <link rel="stylesheet" type="text/css" href="./css/typography.css">
@@ -109,6 +114,7 @@
                 <li class="panel-option" id="selecetor-status"><img src="./images/Icons/Pencil.png" width="32" />Status</li>
                 <li class="panel-subtitle subheading bold"><span></span>Website</li>
                 <li class="panel-option" id="selecetor-webstatus"><img src="./images/Icons/Pencil.png" width="32" />Navigation</li>
+                <li class="panel-option" id="selecetor-favicon"><img src="./images/Icons/Pencil.png" width="32" />Favicon</li>
                 <li class="panel-subtitle subheading bold"><span></span>Account</li>
                 <li class="panel-option" id="selecetor-pass"><img src="./images/Icons/CircleLock.png" width="32" />Reset Pass</li>
                 <!-- <li class="panel-option" id="selecetor-auth">
@@ -298,6 +304,15 @@
                     ?>
                     <input type="submit" name="submit" class="form-submit-button subheading" />
                 </form> 
+            </section>
+            <section id="option-favicon">
+                <h1 class='heading navigation-heading'>Favicon</h1>
+                <form action="./changeFavicon.php" method="post">
+                    <?php
+                        echo "<input class=\"reset-input paragraph\" name=\"url\" type=\"text\" value='".GetFavicon()->fetch_row()[1]."' />"; 
+                    ?>
+                    <button class="submit-pass subheading" name="submit">Submit</button>
+                </form>
             </section>
             <section id="option-pass">
                 <h1 class="heading">Password</h1>

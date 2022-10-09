@@ -16,6 +16,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reviews</title>
 
+    <!-- Favicon -->
+    <?php 
+        echo "<link rel=\"icon\" href=\"".GetFavicon()->fetch_row()[1]."\" />";
+    ?>
+
     <!-- Import Fonts -->
     <link rel="stylesheet" type="text/css" href="./css/ECB.css">
     <link rel="stylesheet" type="text/css" href="./css/typography.css">

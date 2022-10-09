@@ -27,6 +27,11 @@
     <!-- Imported Page Specific Styles -->
     <link rel="stylesheet" type="text/css" href="./css/works.css">
 
+    <!-- Favicon -->
+    <?php 
+        echo "<link rel=\"icon\" href=\"".GetFavicon()->fetch_row()[1]."\" />";
+    ?>
+
     <!-- Script to Store Carousel Data -->
     <script type="text/javascript">
         let pictures = [];

@@ -267,4 +267,45 @@
         // EXECUTE Query
         $sql->execute();
     }
+
+    /*************** FAVICON METHODS ***************/
+
+    /**
+     * METHOD: Retrieves the favicon url
+     */
+    function GetFavicon() {
+        // SET conn Variable to Global
+        global $conn;
+        // PREPARE SQL Statement
+        $sql = $conn->prepare("SELECT * FROM favicon");
+        // EXECUTE Query
+        $sql->execute();
+        // RETURN Result
+        return $sql->get_result();
+    }
+
+    /**
+     * METHOD: Deletes the favicon URL
+     */
+    function DeleteFavicon() {
+        // SET conn Variable to Global
+        global $conn;
+        // PREPARE Query
+        $stmt = $conn->prepare("DELETE FROM favicon");
+        // EXECUTE Query
+        $stmt->execute();
+    }
+
+    /**
+     * METHOD: Sets the favicon URL
+     */
+    function SetFavicon($url) {
+        // SET conn Variable to Global
+        global $conn;
+        // PREPARE Query
+        $stmt = $conn->prepare("INSERT INTO favicon (url) VALUES (?);");
+        $stmt->bind_param("s", $url);
+        // EXECUTE Query
+        $stmt->execute();
+    }
 ?>
