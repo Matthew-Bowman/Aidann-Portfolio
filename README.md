@@ -1,16 +1,16 @@
 # Aidann-Portfolio
 ## Built using the LAMP Stack
 
-### L - Linux
-### A - Apache
-### M - MySQL
-### P - PHP
+###### L - Linux
+###### A - Apache
+###### M - MySQL
+###### P - PHP
 
 ## Potential Changes
 ### /includes/dbfunctions.inc.php
 
--Lines: 5, 6, 7, 8
-    -Change: `getenv("var")` may need to be altered to `$_SERVER["var"]`
+- Lines: 5, 6, 7, 8
+    - Change: `getenv("var")` may need to be altered to `$_SERVER["var"]`
 
 
 ## Environment Variables
